@@ -11,9 +11,8 @@ public class Rick22 {
 	System.out.print("請輸入國文成績:");
 	int chinese = good.nextInt();
 	
-	double all ;
-	all=math+english+chinese;
-	System.out.printf("平均分數 = %.2f",(all)/3);
+	
+	System.out.printf("平均分數 = %.2f",(double)(math+english+chinese)/3);
 	   
 	}
 }
