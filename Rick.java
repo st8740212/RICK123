@@ -3,14 +3,15 @@ import java.util.Scanner;
 	public class Rick {
          public static void main(String[] args) { 
         	 Scanner net = new Scanner(System.in);
-        	 System.out.print("½Ğ¿é¤J§Aªº©m¦W:");
+        	 System.out.print("è«‹è¼¸å…¥ä½ çš„å§“å:");
         	 String name = net.next();
-        	 System.out.print("½Ğ¿é¤J§Aªº¦~ÄÖ:");
+        	 System.out.print("è«‹è¼¸å…¥ä½ çš„å¹´é½¡:");
         	 int age = net.nextInt();
-        	 System.out.printf("%s §A¦n!§Aªº¦~ÄÖ¬°%d·³%n",name,age);
-        	 System.out.print("½Ğ¿é¤J§Aªº®y¥k»Ê:");
+        	 System.out.printf("%s ä½ å¥½!ä½ çš„å¹´é½¡ç‚º%dæ­²%n",name,age);
+        	 System.out.print("è«‹è¼¸å…¥ä½ çš„åº§å³éŠ˜:");
         	 String mot;
         	 while((mot = net.nextLine()).equals("") ){}
-        	 System.out.println("§Aªº®y¥k»Ê¬O:"+ mot);
+        	 System.out.println("ä½ çš„åº§å³éŠ˜æ˜¯:"+ mot);
+        	 
        }
 }
