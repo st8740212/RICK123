@@ -16,7 +16,7 @@ public class Rick3 {
    			max = num1;
    		else
    			max = num3;
-    	}///56123213656//
+    	}
    	
    	
 	}
