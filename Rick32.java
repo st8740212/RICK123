@@ -14,24 +14,24 @@ public class Rick32 {
 			System.out.print("請輸入密碼: ");
 			InUserPW = good.next();
 		
-				if (InUserID.equals(UserID) && InUserPW.equals(UserPW)) 
+			if (InUserID.equals(UserID) && InUserPW.equals(UserPW)) 
+			{
+				System.out.println("登入成功!");	
+				break a;
+			}
+			else
+			{
+				if(i<3)
 				{
-					System.out.println("登入成功!");	
+					System.out.println("輸入錯誤"+i+"次");	
+					i++;
+				}
+				else 
+				{
+					System.out.println("登入失敗!");
 					break a;
 				}
-				else
-				{
-					if(i<3)
-					{
-						System.out.println("輸入錯誤"+i+"次");	
-						i++;
-					}
-					else 
-					{
-						System.out.println("登入失敗!");
-						break a;
-					}
-				}
+			}
 		}
 	}
 }
