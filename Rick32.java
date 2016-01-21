@@ -6,5 +6,7 @@ public class Rick32 {
 		int number = good.nextInt();
 		if(number%2 == 0)
 			System.out.print("计案计");
+		else
+			System.out.print("计计");
 	}
 }
