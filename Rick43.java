@@ -15,7 +15,7 @@ public class Rick43 {
 			System.out.print(list[i] + " ");
 		}
 			System.out.print("\n");
-			
+			System.out.println("奇數偶數的值: ");
 		for (int i = 0; i < list.length-1; i++)
         {
              for (int j = 0; j < list.length-1; j++)  
