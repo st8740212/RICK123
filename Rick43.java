@@ -19,17 +19,17 @@ public class Rick43 {
 		System.out.println("奇數偶數的值: ");
 		
 		for (int i = 0; i < list.length-1; i++)
-        {
-             for (int j = 0; j < list.length-1; j++)  
-             {
-                  if (list[j] < list[j+1])
-                  {
-                      int temp = list[j+1];
-                      list[j+1] = list[j];
-                      list[j] = temp;
-                  }
-             }
-        }
+		{
+			for (int j = 0; j < list.length-1; j++)  
+			{
+				if (list[j] < list[j+1])
+				{
+					int temp = list[j+1];
+					list[j+1] = list[j];
+					list[j] = temp;
+				}
+			}
+		}
 
 		for (int i = 0; i < length; i++) 
 		{
@@ -40,17 +40,17 @@ public class Rick43 {
 		}
 		
 		for (int i = 0; i < list.length-1; i++)
-        {
-             for (int j = 0; j < list.length-1; j++)  
-             {
-                  if (list[j+1] < list[j])
-                  {
-                      int temp = list[j+1];
-                      list[j+1] = list[j];
-                      list[j] = temp;
-                  }
-             }
-        }
+		{
+			for (int j = 0; j < list.length-1; j++)  
+			{
+				if (list[j+1] < list[j])
+				{
+					int temp = list[j+1];
+					list[j+1] = list[j];
+					list[j] = temp;
+				}
+			}
+		}
 		
 		for (int a = 0; a < length; a++) 
 		{
