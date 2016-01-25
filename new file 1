@@ -4,76 +4,75 @@ public class Ch02_06 {
 		{
 			int[] list = { 36 , 77 , 15 , 28 , 33 , 10 , 58 , 70 , 41};  
 			System.out.println("原本的值: ");
-			AAAA(list); 
+			Originalvalue(list); 
 			System.out.print("\n");
 			System.out.println("奇數偶數的值: ");
-			BBBB(list);	
-			CCCC(BBBB(list));
-			DDDD(list);
-			EEEE(DDDD(list));
+			Sortedvalue1(list);	
+			odd(Sortedvalue1(list));
+			Sortedvalue2(list);
+			even(Sortedvalue2(list));
 		}
-		public static void AAAA(int[] list1) 
+	public static void Originalvalue(int[] list) 
 		{
-		int length = list1.length;
-		for (int i = 0; i < length; i++) 
-			{			
-				System.out.print(list1[i] + " ");
+		for (int i = 0; i < list.length; i++) 
+			{
+				System.out.print(list[i] + " ");
 			}
 		}
 
-		public static int[] BBBB(int[] list2)
+	public static int[] Sortedvalue1(int[] list)
 		{       
-		for (int i = 0; i < list2.length-1; i++)
+		for (int i = 0; i < list.length-1; i++)
 		{
-			for (int j = 0; j < list2.length-1; j++)  
+			for (int j = 0; j < list.length-1; j++)  
 			{
-				if (list2[j] < list2[j+1])  //由大到小排列
+				if (list[j] < list[j+1])  //由大到小排列
 				{
-					int temp = list2[j+1];
-					list2[j+1] = list2[j];
-					list2[j] = temp;
+					int temp = list[j+1];
+					list[j+1] = list[j];
+					list[j] = temp;
 				}
 			}
 		}
-		return list2; 
+		return list; 
 		}
 		
-		public static void CCCC(int[] list3)
+	public static void odd(int[] list)
 		{  
-		int length = list3.length; 
-			for (int i = 0; i < length; i++) 
+		
+			for (int i = 0; i < list.length; i++) 
 			{
-				if((list3[i] & 0x1) != 0)
+				if((list[i] & 0x1) != 0)
 				{
-					System.out.print(list3[i] + " ");
+					System.out.print(list[i] + " ");
 				}
 			}
 		}
 		
-		public static int[] DDDD(int[] list4)
+	public static int[] Sortedvalue2(int[] list)
 		{
-		for (int i = 0; i < list4.length-1; i++)
+		for (int i = 0; i < list.length-1; i++)
 		{
-			for (int j = 0; j < list4.length-1; j++)  
+			for (int j = 0; j < list.length-1; j++)  
 			{
-				if (list4[j+1] < list4[j])   ///由小到大
+				if (list[j+1] < list[j])   ///由小到大
 				{
-					int temp = list4[j+1];
-					list4[j+1] = list4[j];
-					list4[j] = temp;
+					int temp = list[j+1];
+					list[j+1] = list[j];
+					list[j] = temp;
 				}
 			}
 		}
-		return list4;
+		return list;
 		}
-		public static void EEEE(int[] list5)
+	public static void even(int[] list)
 		{
-		int length = list5.length;   
-		for (int a = 0; a < length; a++) 
+		   
+		for (int a = 0; a < list.length; a++) 
 			{
-				if((list5[a] & 0x1) == 0)
+				if((list[a] & 0x1) == 0)
 				{
-					System.out.print(list5[a] + " " );
+					System.out.print(list[a] + " " );
 				}
 			}
 		}
