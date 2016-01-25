@@ -2,12 +2,8 @@ public class Rick43 {
 	
 	public static void main(String[] args) 
 		{
-			int[] list = { 36 , 77 , 15 , 28 , 33 , 10 , 58 , 70 , 41};  
-			reorderOddEven(list); 
-		}
-	
-		static void reorderOddEven(int[] list) 
-		{
+			int[] list = {  41 , 56 , 66 , 31 , 96 , 86 , 76 , 21};  
+
 		int length = list.length;
 		System.out.println("原本的值: ");
 		for (int i = 0; i < length; i++) 
