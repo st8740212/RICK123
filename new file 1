@@ -1,0 +1,80 @@
+public class Ch02_06 {
+	
+	public static void main(String[] args) 
+		{
+			int[] list = { 36 , 77 , 15 , 28 , 33 , 10 , 58 , 70 , 41};  
+			System.out.println("原本的值: ");
+			AAAA(list); 
+			System.out.print("\n");
+			System.out.println("奇數偶數的值: ");
+			BBBB(list);	
+			CCCC(BBBB(list));
+			DDDD(list);
+			EEEE(DDDD(list));
+		}
+		public static void AAAA(int[] list1) 
+		{
+		int length = list1.length;
+		for (int i = 0; i < length; i++) 
+			{			
+				System.out.print(list1[i] + " ");
+			}
+		}
+
+		public static int[] BBBB(int[] list2)
+		{       
+		for (int i = 0; i < list2.length-1; i++)
+		{
+			for (int j = 0; j < list2.length-1; j++)  
+			{
+				if (list2[j] < list2[j+1])  //由大到小排列
+				{
+					int temp = list2[j+1];
+					list2[j+1] = list2[j];
+					list2[j] = temp;
+				}
+			}
+		}
+		return list2; 
+		}
+		
+		public static void CCCC(int[] list3)
+		{  
+		int length = list3.length; 
+			for (int i = 0; i < length; i++) 
+			{
+				if((list3[i] & 0x1) != 0)
+				{
+					System.out.print(list3[i] + " ");
+				}
+			}
+		}
+		
+		public static int[] DDDD(int[] list4)
+		{
+		for (int i = 0; i < list4.length-1; i++)
+		{
+			for (int j = 0; j < list4.length-1; j++)  
+			{
+				if (list4[j+1] < list4[j])   ///由小到大
+				{
+					int temp = list4[j+1];
+					list4[j+1] = list4[j];
+					list4[j] = temp;
+				}
+			}
+		}
+		return list4;
+		}
+		public static void EEEE(int[] list5)
+		{
+		int length = list5.length;   
+		for (int a = 0; a < length; a++) 
+			{
+				if((list5[a] & 0x1) == 0)
+				{
+					System.out.print(list5[a] + " " );
+				}
+			}
+		}
+	}
