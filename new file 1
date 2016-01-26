@@ -1,72 +1,77 @@
 public class Ch02_06 {
 	
 	public static void main(String[] args) 
-		{
-			int[] list = { 36 , 77 , 15 , 28 , 33 , 10 , 58 , 70 , 41};  
-			System.out.println("原本的值: ");
-			Originalvalue(list); 
-			System.out.println("\n奇數偶數的值: ");
-			Sortedvalue1(list);	
-			odd(Sortedvalue1(list));
-			even(Sortedvalue1(list));
-		}
+	{
+		int[] list = { 36 , 77 , 15 , 28 , 33 , 10 , 58 , 71 , 41};  
+		System.out.println("原本的值: ");
+		Originalvalue(list); 
+		System.out.println("\n奇數偶數的值: ");
+		int[] sorted = Sortedvalue1(list);
+		odd (sorted);
+		even(sorted);
+	}	
 
-	public static void Originalvalue(int[] list) 
-		{
+	public static void Originalvalue(int[] list)
+	{
 		for (int i = 0; i < list.length; i++) 
 			{
 				System.out.print(list[i] + " ");
 			}
-		}
+	}
 
 	public static int[] Sortedvalue1(int[] list)
-		{       
-			for (int i = 0; i < list.length-1; i++)
+	{       
+		for (int i = 0; i < list.length-1; i++)
+		{
+			for (int j = 0; j < list.length-1; j++)  
 			{
-				for (int j = 0; j < list.length-1; j++)  
+				if (list[j] < list[j+1])  //由大到小排列
 				{
-					if (list[j] < list[j+1])  //由大到小排列
-					{
-						int temp = list[j+1];
-						list[j+1] = list[j];
-						list[j] = temp;
-					}
+					int temp = list[j+1];
+					list[j+1] = list[j];
+					list[j] = temp;
 				}
 			}
-			return list; 
 		}
+		return list; 
+	}
 	
 	public static void odd(int[] list)
-		{  
-			for (int i = 0; i < list.length; i++) 
-			{
-				print1(list[i]);
+	{  
+		for (int i = 0; i < list.length; i++) 
+		{
+			//print(list[i]);
+			if((list[i] & 0x1) != 0 )
+			{	
+				System.out.print(list[i]+ " ");
 			}
 		}
+	}
 		
 	public static void even(int[] list)
-		{
-			int a = list.length; 
-			while (a >= list.length - (list.length-1) ) 
-				{
-					a--;
-					print2(list[a]);
+	{
+		int a = list.length; 
+		while (a >= list.length - (list.length-1) ) 
+			{
+				a--;
+				//print(list[a]);
+				if((list[a] & 0x1) == 0 )
+				{	
+					System.out.print(list[a]+ " ");
 				}
-		}
+			}
+	}
 	
-	public static void print1(int number)
-		{
-			if((number & 0x1) != 0)
-			{	
-				System.out.print(number + " ");
-			}
-		}
+	/*public static void print(int number)
+	{
 		
-	public static void print2(int number)
-		{
-			if((number & 0x1) == 0)
-			{	
-				System.out.print(number + " ");
-			}
+		if((number & 0x1) != 0 )
+		{	
+			System.out.print(a+ " ");
 		}
- }
+		else
+		{	
+			System.out.print(number + " ");
+		}
+	}*/
+}
