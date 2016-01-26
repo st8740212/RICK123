@@ -1,0 +1,68 @@
+public class new file 1 {
+   
+    public static void main(String[] args)
+    {
+        int[] list =
+        { 36, 77, 15, 28, 33, 10, 58, 71, 41 };
+        System.out.println("原本的值: ");
+        Originalvalue(list);
+        System.out.println("\n奇數偶數的值: ");
+        int[] sorted = Sortedvalue1(list);
+        odd(sorted);
+        even(sorted);
+    }
+
+    public static void Originalvalue(int[] list)
+    {
+        for (int i = 0; i < list.length; i++)
+        {
+            System.out.print(list[i] + " ");
+        }
+    }
+
+    public static int[] Sortedvalue1(int[] list)
+    {
+        for (int i = 0; i < list.length - 1; i++)
+        {
+            for (int j = 0; j < list.length - 1; j++)
+            {
+                if (list[j] < list[j + 1]) // 由大到小排列
+                {
+                    int temp = list[j + 1];
+                    list[j + 1] = list[j];
+                    list[j] = temp;
+                }
+            }
+        }
+        return list;
+    }
+
+    public static void odd(int[] list)
+    {
+        for (int i = 0; i < list.length; i++)
+        {
+            print(list[i], true);
+        }
+    }
+
+    public static void even(int[] list)
+    {
+        for (int i = list.length - 1; i >= 0; i--)
+        {
+            print(list[i], false);
+        }
+    }
+
+    public static void print(int number, boolean type)
+    {
+        if ((number & 0x1) != 0 && type == true)
+        {
+            System.out.print(number + " ");
+        }
+
+        if ((number & 0x1) == 0 && type == false)
+        {
+            System.out.print(number + " ");
+        }
+    }
+}
