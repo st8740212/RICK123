@@ -8,27 +8,27 @@ public class Rick32 {
 		
 		a:while(i<4){
 		
-			System.out.print("½Ð¿é¤J±b¸¹: ");
+			System.out.print("ï¿½Ð¿ï¿½Jï¿½bï¿½ï¿½: ");
 			InUserID = good.next();
 			
-			System.out.print("½Ð¿é¤J±K½X: ");
+			System.out.print("ï¿½Ð¿ï¿½Jï¿½Kï¿½X: ");
 			InUserPW = good.next();
 		
 			if (InUserID.equals(UserID) && InUserPW.equals(UserPW)) 
 			{
-				System.out.println("µn¤J¦¨¥\!");	
+				System.out.println("ï¿½nï¿½Jï¿½ï¿½ï¿½");	
 				break a;
 			}
 			else
 			{
 				if(i<3)
 				{
-					System.out.println("¿é¤J¿ù»~"+i+"¦¸");	
+					System.out.println("ï¿½ï¿½Jï¿½ï¿½ï¿½~"+i+"ï¿½ï¿½");	
 					i++;
 				}
 				else 
 				{
-					System.out.println("µn¤J¥¢±Ñ!");
+					System.out.println("ï¿½nï¿½Jï¿½ï¿½ï¿½ï¿½!");
 					break a;
 				}
 			}

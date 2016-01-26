@@ -1,16 +1,18 @@
 import java.util.Scanner;
 
-public class Rick1 {
-	public static void main(String[] args) {
-		
-		Scanner good = new Scanner(System.in);
-   		System.out.print("½Ð¿é¤J²Ä¤@­Ó¾ã¼Æ:");
-		int a = good.nextInt();
-		System.out.print("½Ð¿é¤J²Ä¤G­Ó¾ã¼Æ:");
-		int b = good.nextInt();
-		boolean c= true;
-		c=a>b;
-		System.out.println(a+" > "+b+" = "+c);
-	   
-	}
+public class Rick1
+{
+    public static void main(String[] args)
+    {
+
+        Scanner good = new Scanner(System.in);
+        System.out.print("ï¿½Ð¿ï¿½Jï¿½Ä¤@ï¿½Ó¾ï¿½ï¿½:");
+        int a = good.nextInt();
+        System.out.print("ï¿½Ð¿ï¿½Jï¿½Ä¤Gï¿½Ó¾ï¿½ï¿½:");
+        int b = good.nextInt();
+        boolean c = true;
+        c = a > b;
+        System.out.println(a + " > " + b + " = " + c);
+
+    }
 }
