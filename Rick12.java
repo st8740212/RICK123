@@ -1,36 +1,39 @@
 import java.util.*;
-
+import java.util.Random;
+import java.util.Arrays;
 public class Rick12
 {
     public static void main(String[] args)
     {
-        /*
-         * Scanner scn = new Scanner(System.in);
-         * System.out.println("歡迎來到我的99程式"); System.out.print("請輸入你的名子: ");
-         * String name = scn.next(); System.out.println("歡迎" + name);
-         * System.out.println("我們有四個人在玩遊戲");
-         */
-
-        System.out.println(card(0));
-        System.out.println(card(1));
-
+        ArrayList<Integer> cardlist = new ArrayList<Integer>();
+        Random ran = new Random();
+        card(cardlist);
+        //System.out.println(cardlist.size());
+        //System.out.println(ran.nextInt(cardlist.size()));
+        //int a=ran.nextInt(cardlist.size());
+       // System.out.println(getcard(a, cardlist));
+        for(int i=1;i<=52; i++)
+        {
+            int a = ran.nextInt(cardlist.size());
+            System.out.print(getcard(a, cardlist));
+        }
+        
+        
+        
+        
+        
     }
 
-    public static int card(int temp)
+    public static void card(ArrayList<Integer> templist)
     {
-        ArrayList<Integer> lists = new ArrayList<Integer>();
 
         for (int i = 1; i <= 4; i++)
         {
             for (int j = 1; j <= 13; j++)
             {
-                lists.add(j);
+                templist.add(j);
             }
         }
-
-        System.out.println(lists.size());
-        return lists.get(temp) & lists.remove(temp);
-
         /*
          * for (int var : lists) { System.out.print(var + " "); }
          * 
@@ -38,8 +41,12 @@ public class Rick12
          */
     }
 
-    public static void wash(int wash)
+    public static int getcard(int temp, ArrayList<Integer> templist)
     {
-
+        int number = templist.get(temp);
+        templist.remove(temp);
+        //System.out.println(templist.size());                    ///範圍大小 {0 ~ (templist.size()-1)}
+        return number;
     }
+    
 }
