@@ -1,25 +1,27 @@
 import java.util.*;
 import java.util.Random;
 import java.util.Arrays;
+
 public class Rick12
 {
     public static void main(String[] args)
     {
         ArrayList<Integer> cardlist = new ArrayList<Integer>();
+        
+        
         Random ran = new Random();
         card(cardlist);
-        //System.out.println(cardlist.size());
-        //System.out.println(ran.nextInt(cardlist.size()));
-        //int a=ran.nextInt(cardlist.size());
-       // System.out.println(getcard(a, cardlist));
-        for(int i=1;i<=52; i++)
+        // System.out.println(cardlist.size());
+        // System.out.println(ran.nextInt(cardlist.size()));
+        // int a=ran.nextInt(cardlist.size());
+        // System.out.println(getcard(a, cardlist));
+        int b ;
+        
+        for (int i = 1; i <= 52; i++)
         {
-            int a = ran.nextInt(cardlist.size());
-            System.out.print(getcard(a, cardlist));
+            b = ran.nextInt(cardlist.size());
+            System.out.println(getcard(b, cardlist));
         }
-        
-        
-        
         
         
     }
@@ -45,8 +47,9 @@ public class Rick12
     {
         int number = templist.get(temp);
         templist.remove(temp);
-        //System.out.println(templist.size());                    ///範圍大小 {0 ~ (templist.size()-1)}
+        // System.out.println(templist.size()); ///範圍大小 {0 ~
+        // (templist.size()-1)}
         return number;
     }
-    
+
 }
