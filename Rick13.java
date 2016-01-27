@@ -4,7 +4,7 @@ public class Rick13
 {
     public static void main(String[] args)
     {
-        System.out.println("Hello World");
+        
        
         ArrayList<Integer> lists = new ArrayList<Integer>(); 
         
@@ -15,15 +15,13 @@ public class Rick13
                 lists.add(j);
             }
         }
-        
-        
-       
+
         for(int var:lists)
         {
-            System.out.println(var);
+            System.out.print(var+" ");
         }
        
-       System.out.println(lists.get(35));
-       System.out.println(lists.get(1));
+       System.out.println("\n"+lists.get(35));
+       System.out.println(lists.get(34));
      }
 }

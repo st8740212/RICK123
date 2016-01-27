@@ -1,6 +1,4 @@
-import java.util.Scanner;
 import java.util.*;
-import java.util.Arrays;
 
 public class Rick12
 {
@@ -12,25 +10,33 @@ public class Rick12
          * String name = scn.next(); System.out.println("歡迎" + name);
          * System.out.println("我們有四個人在玩遊戲");
          */
-        
+        System.out.println(card(0));
     }
 
-    public static void card()
+    public static int card(int temp)
     {
-        Scanner sc = new Scanner(System.in);
-        int[] a = new int[52];
+        ArrayList<Integer> lists = new ArrayList<Integer>();
+
         for (int i = 1; i <= 4; i++)
         {
             for (int j = 1; j <= 13; j++)
             {
-                a[j] = sc.nextInt();
+                lists.add(j);
             }
         }
-        for (int i = 52; i >= 0; i--)
+        
+        return lists.get(temp);
+        /*
+        for (int var : lists)
         {
-            System.out.print(a[i]);
-
+            System.out.print(var + " ");
         }
+
+        System.out.println("\n" + lists.get(35));
+        */
+    }
+    public static void wash()
+    {
         
     }
 }
