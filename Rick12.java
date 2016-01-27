@@ -12,20 +12,25 @@ public class Rick12
          * String name = scn.next(); System.out.println("歡迎" + name);
          * System.out.println("我們有四個人在玩遊戲");
          */
-
+        
     }
 
-    public static int[] card(int card)
+    public static void card()
     {
-        
+        Scanner sc = new Scanner(System.in);
+        int[] a = new int[52];
         for (int i = 1; i <= 4; i++)
         {
             for (int j = 1; j <= 13; j++)
             {
-                int[] a =
-                { j };
+                a[j] = sc.nextInt();
             }
         }
-        return a;  //錯誤
+        for (int i = 52; i >= 0; i--)
+        {
+            System.out.print(a[i]);
+
+        }
+        
     }
 }
