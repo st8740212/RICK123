@@ -11,27 +11,26 @@ public class Rick12
         String name = scn.next();
         System.out.println("歡迎" + name);
         System.out.println("我們有四個人在玩遊戲");*/
-        ArrayList list = new ArrayList();
-        System.out.println(list.size());
-        System.out.println(list.isEmpty());
-        list.add("楊過");  
-        list.add(1,"小龍女");      
-        System.out.println(list.size());
-        System.out.println(list.get(1));  
+        System.out.println(card(0));
     }
 
-    public static void card(int card)
+    public static int card(int card)
     {
-       
-
-        for (int i = 0; i <= 13; i++)
+        ArrayList list = new ArrayList(52);
+        
+        
+        for (int i = 1; i <= 13; i++)
         {
-            for (int a = 0; a <= 4; a++)
+            for (int j = 1; j <= 4; j++)
             {
-                System.out.println(card);
+                
+               
+                
             }
         }
-
+        System.out.println(list.size());
+        
+        return card; 
     }
 
 }
