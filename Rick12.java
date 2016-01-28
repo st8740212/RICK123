@@ -8,18 +8,11 @@ public class Rick12
     {
         ArrayList<Integer> cardlist = new ArrayList<Integer>();
         card(cardlist);
-        ArrayList<Integer> player1 = new ArrayList<Integer>();
-        ArrayList<Integer> player2 = new ArrayList<Integer>();
-        ArrayList<Integer> player3 = new ArrayList<Integer>();
-        ArrayList<Integer> player4 = new ArrayList<Integer>();
-        for(int i =1; i<=52; i++)
-        {
-        player1.add(getcard(cardlist));
-        }
+       
        
         
        
-          System.out.println(player1.size());
+
 
     }
 
