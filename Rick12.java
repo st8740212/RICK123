@@ -7,15 +7,20 @@ public class Rick12
     public static void main(String[] args)
     {
         ArrayList<Integer> cardlist = new ArrayList<Integer>();
-       
         card(cardlist);
+       
+        randomcard(cardlist);
+        
+        //FourPlayer(cardlist);
         // System.out.println(cardlist.size());
         // System.out.println(ran.nextInt(cardlist.size()));
         // int a=ran.nextInt(cardlist.size());
-        // System.out.println(getcard(a, cardlist));
-        randomcard(cardlist);
-        
-        
+       
+        for (int i = 1; i <= 52; i++)
+        {
+            int b =randomcard(cardlist);
+            System.out.println(getcard(b, cardlist));
+        }
     }
 
     public static void card(ArrayList<Integer> templist) /// 定義52張牌
@@ -44,14 +49,19 @@ public class Rick12
         return number;
     }
 
-    public static void randomcard(ArrayList<Integer> random)  //把牌組隨機排列
+    public static int randomcard(ArrayList<Integer> random)  //把牌組隨機排列
     {
         Random ran = new Random();
-        int b = ran.nextInt(random.size());
-        for (int i = 1; i <= 52; i++) // 隨機亂數
-        {
-            b = ran.nextInt(random.size());
-            System.out.println(getcard(b, random));
-        }
+        int a = ran.nextInt(random.size());
+       
+        return a;
     }
+   /* public static void FourPlayer(ArrayList<Integer> Player)
+    {
+        String[] values = Player.toArray(new String[0]);
+        System.out.println(values);
+    }*/
+    
+    
+    
 }
