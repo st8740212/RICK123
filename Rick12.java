@@ -20,12 +20,14 @@ public class Rick12
         player3.add(getcard(cardlist));
         player4.add(getcard(cardlist));
         }
-        
- 
-        System.out.println("["+player1.get(0)+"] ["+player1.get(1)+"] ["+player1.get(2)+"] ["+player1.get(3)+"] ["+player1.get(4)+"]");
+        int  mychoose;
+        int right =101;
+        int total=0;
+        for(int a =0; a<=right; a++){
+        System.out.println("1.["+player1.get(0)+"]    2.["+player1.get(1)+"]    3.["+player1.get(2)+"]    4.["+player1.get(3)+"]    5.["+player1.get(4)+"]");
         System.out.print("輸入你的選擇(1~5): ");
         int choose = scn.nextInt();
-        int  mychoose;
+        
         switch(choose)
         {
         case 1:
@@ -44,10 +46,10 @@ public class Rick12
             mychoose= player1.get(4);
             
         }
-        
-        
-        System.out.print(mychoose);
-        
+        right=right-mychoose;
+        total=total+mychoose;
+        System.out.println("目前分數為: "+total);
+        }
     }
 
     public static void card(ArrayList<Integer> templist)
