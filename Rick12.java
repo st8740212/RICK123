@@ -13,6 +13,7 @@ public class Rick12
         ArrayList<Integer> player4 = new ArrayList<Integer>();
         card(cardlist);
         Scanner scn = new Scanner(System.in); // 玩家輸入
+
         for (int i = 1; i <= 5; i++)
         {
             player1.add(getcard(cardlist));
@@ -20,75 +21,60 @@ public class Rick12
             player3.add(getcard(cardlist));
             player4.add(getcard(cardlist));
         }
+
         int total = 0;
-
-        for (int i = 1; i < 52; i++)
+        for (;;)
         {
-            if (total < 100)
-            {
-                System.out.println("玩家1出: " + player1.get(0));
-                total += player1.get(0);
-                player1.remove(0);
-                player1.add(getcard(cardlist));
-                System.out.println("目前分數: " + total);
-            }
-
-            else
-            {
-                System.out.println("玩家4輸了!!!");
-                break;
-            }
-
-            if (total < 100)
-            {
-                System.out.println("玩家2出: " + player2.get(0));
-                total += player2.get(0);
-                player2.remove(0);
-                player2.add(getcard(cardlist));
-                System.out.println("目前分數: " + total);
-            }
-
-            else
+            System.out.println("玩家1出: " + player1.get(0));
+            total += allplayer(player1, cardlist);
+            System.out.println("目前分數: " + total);/// player1 total cardlist
+            if (total > 100)
             {
                 System.out.println("玩家1輸了!!!");
                 break;
             }
 
-            if (total < 100)
-            {
-                System.out.println("玩家3出: " + player3.get(0));
-                total += player3.get(0);
-                player3.remove(0);
-                player3.add(getcard(cardlist));
-                System.out.println("目前分數: " + total);
-            }
-
-            else
+            System.out.println("玩家2出: " + player2.get(0));
+            total += allplayer(player2, cardlist);
+            System.out.println("目前分數: " + total);/// player2 total cardlist
+            if (total > 100)
             {
                 System.out.println("玩家2輸了!!!");
                 break;
             }
 
-            if (total < 100)
-            {
-                System.out.println("玩家4出: " + player4.get(0));
-                total += player4.get(0);
-                player4.remove(0);
-                player4.add(getcard(cardlist));
-                System.out.println("目前分數: " + total);
-            }
-
-            else
+            System.out.println("玩家3出: " + player3.get(0));
+            total += allplayer(player3, cardlist);
+            System.out.println("目前分數: " + total);/// player3 total cardlist
+            if (total > 100)
             {
                 System.out.println("玩家3輸了!!!");
                 break;
             }
-            if (total < 100)
+
+            System.out.println("玩家4出: " + player4.get(0));
+            total += allplayer(player4, cardlist);
+            System.out.println("目前分數: " + total);// player4 total cardlist
+            if (total > 100)
             {
-                System.out.println("-----------下一輪----------");
+                System.out.println("玩家4輸了!!!");
+                break;
             }
+
+            System.out.println("-----------下一輪----------");
+
         }
 
+    }
+
+    public static int allplayer(ArrayList<Integer> player, ArrayList<Integer> card_list)
+    {
+        System.out.println(player.get(0));
+        int playergetcard = player.get(0);
+        int number = getcard(card_list);
+        player.remove(0);
+        player.add(number);
+        return playergetcard;
     }
 
     public static void card(ArrayList<Integer> templist) /// 定義52張牌

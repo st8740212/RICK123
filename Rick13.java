@@ -23,5 +23,23 @@ public class Rick13
        
        System.out.println("\n"+lists.get(35));
        System.out.println(lists.get(34));
+       
+       
+       /////////////////測試code
+       
+       for (int a = 0; a < cardlist.size(); a++)
+       {
+           System.out.print("  " + cardlist.get(a));
+       }
+       System.out.println();
+       System.out.println(cardlist.size());
+       
+       System.out.println(getcard(cardlist));
+       System.out.println(cardlist.size());
+       for (int a = 0; a < cardlist.size(); a++)
+       {
+           System.out.print("  " + cardlist.get(a));
+       }
+       System.out.println();
      }
 }
