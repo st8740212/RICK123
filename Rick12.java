@@ -15,10 +15,14 @@ public class Rick12
         // System.out.println(ran.nextInt(cardlist.size()));
         // int a=ran.nextInt(cardlist.size());
 
-        for (int i = 1; i <= 52; i++)
+       /* for (int i = 1; i <= 52; i++)
         {
             int b = randomcard(cardlist);
             System.out.println(getcard(b, cardlist));
+        }*/
+        for (int i = 0; i < toarray(cardlist).length; i++)
+        {
+            System.out.print(toarray(cardlist)[i] + " ");
         }
     }
 
@@ -55,10 +59,10 @@ public class Rick12
         return a;
     }
 
-    public static void toarray(ArrayList<Integer> toarry)  //不懂轉置矩的原理
+    public static Integer[] toarray(ArrayList<Integer> toarray)  
     {
-        String[] values = toarry.toArray(new String[0]);
-        System.out.println(values);
+        Integer[] values = toarray.toArray(new Integer[0]);
+        return values;
     }
 
 }
