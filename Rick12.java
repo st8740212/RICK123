@@ -12,48 +12,32 @@ public class Rick12
         ArrayList<Integer> player3 = new ArrayList<Integer>();
         ArrayList<Integer> player4 = new ArrayList<Integer>();
         card(cardlist);
-        Scanner scn = new Scanner(System.in);
-        for(int i =1; i<=5; i++)
+        Scanner scn = new Scanner(System.in); // 玩家輸入
+        for (int i = 1; i <= 5; i++)
         {
-        player1.add(getcard(cardlist));
-        player2.add(getcard(cardlist));
-        player3.add(getcard(cardlist));
-        player4.add(getcard(cardlist));
+            player1.add(getcard(cardlist));
+            player2.add(getcard(cardlist));
+            player3.add(getcard(cardlist));
+            player4.add(getcard(cardlist));
         }
-        int  mychoose;
-        int right =101;
-        int total=0;
-        for(int a =0; a<=right; a++){
-        System.out.println("1.["+player1.get(0)+"]    2.["+player1.get(1)+"]    3.["+player1.get(2)+"]    4.["+player1.get(3)+"]    5.["+player1.get(4)+"]");
-        System.out.print("輸入你的選擇(1~5): ");
-        int choose = scn.nextInt();
-        
-        switch(choose)
+        int total = 0;
+        int temp = total;
+        for (int i = 100; i > temp; i--)
         {
-        case 1:
-           mychoose= player1.get(0);
-            break;
-        case 2:
-            mychoose= player1.get(1);
-            break;
-        case 3:
-           mychoose= player1.get(2);
-            break;
-        case 4:
-           mychoose= player1.get(3);
-            break;
-        default :
-            mychoose= player1.get(4);
-            
+            System.out.println(player1.get(0));
+            System.out.println(player2.get(0));
+            System.out.println(player3.get(0));
+            System.out.println(player4.get(0));
+
+            total = player1.get(0) + player2.get(0) + player3.get(0) + player4.get(0);
+
+            temp = total + temp;
+            System.out.println("總分: " + temp);
         }
-        right=right-mychoose;
-        total=total+mychoose;
-        System.out.println("目前分數為: "+total);
-        }
-    
+
     }
 
-    public static void card(ArrayList<Integer> templist)
+    public static void card(ArrayList<Integer> templist) /// 定義52張牌
     {
         for (int i = 1; i <= 4; i++)
         {
@@ -64,7 +48,7 @@ public class Rick12
         }
     }
 
-    public static int getcard(ArrayList<Integer> templist)
+    public static int getcard(ArrayList<Integer> templist) // 隨機亂數取牌
     {
         Random ran = new Random();
         int temp = ran.nextInt(templist.size());
