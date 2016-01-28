@@ -7,20 +7,13 @@ public class Rick12
     public static void main(String[] args)
     {
         ArrayList<Integer> cardlist = new ArrayList<Integer>();
-       
         card(cardlist);
-        // System.out.println(cardlist.size());
-        // System.out.println(ran.nextInt(cardlist.size()));
-        // System.out.println(getcard(a, cardlist));
-        //你可以把getcard這個method改成直接取random的值
-        //你只要把random的那行code拿進來  取代原本的temp就可以了
         
         for (int i = 1; i <= 52; i++)
         {
             System.out.println(getcard(cardlist));
         }
-    
-        
+
     }
 
     public static void card(ArrayList<Integer> templist)
@@ -40,14 +33,14 @@ public class Rick12
          */
     }
 
-    public static int getcard( ArrayList<Integer> templist)
+    public static int getcard(ArrayList<Integer> templist)
     {
         Random ran = new Random();
-        int temp =ran.nextInt(templist.size());
+        int temp = ran.nextInt(templist.size());
         int number = templist.get(temp);
         templist.remove(temp);
         // System.out.println(templist.size()); 範圍大小 {0 ~(templist.size()-1)}
-         
+
         return number;
     }
 
