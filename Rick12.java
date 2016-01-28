@@ -50,6 +50,7 @@ public class Rick12
         total=total+mychoose;
         System.out.println("目前分數為: "+total);
         }
+    
     }
 
     public static void card(ArrayList<Integer> templist)
