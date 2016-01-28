@@ -12,12 +12,14 @@ public class Rick12
         ArrayList<Integer> player2 = new ArrayList<Integer>();
         ArrayList<Integer> player3 = new ArrayList<Integer>();
         ArrayList<Integer> player4 = new ArrayList<Integer>();
-        
-        
-        for (int i = 1; i <= 52; i++)
+        for(int i =1; i<=52; i++)
         {
-            System.out.println(getcard(cardlist));
+        player1.add(getcard(cardlist));
         }
+       
+        
+       
+          System.out.println(player1.size());
 
     }
 
@@ -38,7 +40,6 @@ public class Rick12
         int temp = ran.nextInt(templist.size());
         int number = templist.get(temp);
         templist.remove(temp);
-        // System.out.println(templist.size()); 範圍大小 {0 ~(templist.size()-1)}
         return number;
     }
 
