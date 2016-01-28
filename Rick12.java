@@ -21,18 +21,58 @@ public class Rick12
             player4.add(getcard(cardlist));
         }
         int total = 0;
-        int temp = total;
-        for (int i = 100; i > temp; i--)
+        
+        for (int i = 1; i <52; i++)
         {
-            System.out.println(player1.get(0));
-            System.out.println(player2.get(0));
-            System.out.println(player3.get(0));
-            System.out.println(player4.get(0));
-
-            total = player1.get(0) + player2.get(0) + player3.get(0) + player4.get(0);
-
-            temp = total + temp;
-            System.out.println("總分: " + temp);
+            if(total < 100){
+            System.out.println("玩家1出: "+player1.get(0));
+            total += player1.get(0);
+            player1.remove(0);
+            player1.add(getcard(cardlist));
+            System.out.println("目前分數: "+total);
+            }
+            else {
+                System.out.println("玩家1輸了!!!");
+                break;
+            }
+            if(total < 100){
+            System.out.println("玩家2出: "+player2.get(0));
+            total +=  player2.get(0);
+            player2.remove(0);
+            player2.add(getcard(cardlist));
+            System.out.println("目前分數: "+total);
+            }
+            
+            else {
+            System.out.println("玩家2輸了!!!");
+                break;
+                
+            }
+            if(total < 100){
+            System.out.println("玩家3出: "+player3.get(0));
+            total += player3.get(0) ;
+            player3.remove(0);
+            player3.add(getcard(cardlist));
+            System.out.println("目前分數: "+total);
+            }
+            else {
+            System.out.println("玩家3輸了!!!");
+            break;
+            }
+            if(total < 100){
+            System.out.println("玩家4出: "+player4.get(0));
+            total += player4.get(0);
+            player4.remove(0);
+            player4.add(getcard(cardlist));
+            System.out.println("目前分數: "+total);
+            }
+            
+            else {
+            System.out.println("玩家4輸了!!!");
+            break;
+            }
+            System.out.println("-----------下一輪----------");
+ 
         }
 
     }
