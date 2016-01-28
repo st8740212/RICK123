@@ -21,9 +21,32 @@ public class Rick12
         player4.add(getcard(cardlist));
         }
         
+ 
         System.out.println("["+player1.get(0)+"] ["+player1.get(1)+"] ["+player1.get(2)+"] ["+player1.get(3)+"] ["+player1.get(4)+"]");
-        System.out.print("輸入你的選擇: ");
+        System.out.print("輸入你的選擇(1~5): ");
         int choose = scn.nextInt();
+        int  mychoose;
+        switch(choose)
+        {
+        case 1:
+           mychoose= player1.get(0);
+            break;
+        case 2:
+            mychoose= player1.get(1);
+            break;
+        case 3:
+           mychoose= player1.get(2);
+            break;
+        case 4:
+           mychoose= player1.get(3);
+            break;
+        default :
+            mychoose= player1.get(4);
+            
+        }
+        
+        
+        System.out.print(mychoose);
         
     }
 
