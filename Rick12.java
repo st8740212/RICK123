@@ -25,8 +25,7 @@ public class Rick12
         int total = 0;
         for (;;)
         {
-            System.out.println("玩家1出: " + player1.get(0));
-            total += allplayer(player1, cardlist);
+            total += allplayer(player1, cardlist, 1);
             System.out.println("目前分數: " + total);/// player1 total cardlist
             if (total > 100)
             {
@@ -34,8 +33,7 @@ public class Rick12
                 break;
             }
 
-            System.out.println("玩家2出: " + player2.get(0));
-            total += allplayer(player2, cardlist);
+            total += allplayer(player2, cardlist, 2);
             System.out.println("目前分數: " + total);/// player2 total cardlist
             if (total > 100)
             {
@@ -43,8 +41,7 @@ public class Rick12
                 break;
             }
 
-            System.out.println("玩家3出: " + player3.get(0));
-            total += allplayer(player3, cardlist);
+            total += allplayer(player3, cardlist, 3);
             System.out.println("目前分數: " + total);/// player3 total cardlist
             if (total > 100)
             {
@@ -52,8 +49,7 @@ public class Rick12
                 break;
             }
 
-            System.out.println("玩家4出: " + player4.get(0));
-            total += allplayer(player4, cardlist);
+            total += allplayer(player4, cardlist, 4);
             System.out.println("目前分數: " + total);// player4 total cardlist
             if (total > 100)
             {
@@ -62,18 +58,17 @@ public class Rick12
             }
 
             System.out.println("-----------下一輪----------");
-
         }
 
     }
 
-    public static int allplayer(ArrayList<Integer> player, ArrayList<Integer> card_list)
+    public static int allplayer(ArrayList<Integer> player, ArrayList<Integer> card_list, int playernumber)
     {
-        System.out.println(player.get(0));
         int playergetcard = player.get(0);
         int number = getcard(card_list);
         player.remove(0);
         player.add(number);
+        System.out.println("玩家" + playernumber + "出: " + playergetcard);
         return playergetcard;
     }
 
