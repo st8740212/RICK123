@@ -7,7 +7,7 @@ public class Rick12
     public static void main(String[] args)
     {
         ArrayList<Integer> cardlist = new ArrayList<Integer>();
-        Random ran = new Random();
+       
         card(cardlist);
         // System.out.println(cardlist.size());
         // System.out.println(ran.nextInt(cardlist.size()));
@@ -17,7 +17,7 @@ public class Rick12
         
         for (int i = 1; i <= 52; i++)
         {
-            System.out.println(getcard(ran.nextInt(cardlist.size()), cardlist));
+            System.out.println(getcard(cardlist));
         }
     
         
@@ -40,8 +40,10 @@ public class Rick12
          */
     }
 
-    public static int getcard(int temp, ArrayList<Integer> templist)
+    public static int getcard( ArrayList<Integer> templist)
     {
+        Random ran = new Random();
+        int temp =ran.nextInt(templist.size());
         int number = templist.get(temp);
         templist.remove(temp);
         // System.out.println(templist.size()); 範圍大小 {0 ~(templist.size()-1)}
