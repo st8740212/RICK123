@@ -19,7 +19,10 @@ public class Rick12
         player3.add(getcard(cardlist));
         player4.add(getcard(cardlist));
         }
-        System.out.println(player1.size()+" "+player2.size()+" "+player3.size()+" "+player4.size());
+        System.out.println(player1.get(1)+" "+player1.get(2)+" "+player1.get(3)+" "+player1.get(4)+" "+player1.get(0));
+        System.out.println(player2.get(1)+" "+player2.get(2)+" "+player2.get(3)+" "+player2.get(4)+" "+player2.get(0));
+        System.out.println(player3.get(1)+" "+player3.get(2)+" "+player3.get(3)+" "+player3.get(4)+" "+player3.get(0));
+        System.out.println(player4.get(1)+" "+player4.get(2)+" "+player4.get(3)+" "+player4.get(4)+" "+player4.get(0));
     }
 
     public static void card(ArrayList<Integer> templist)
