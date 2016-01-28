@@ -10,12 +10,8 @@ public class Rick12
         card(cardlist);
         randomcard(cardlist);
         toarray(cardlist);
-        // FourPlayer(cardlist);
-        // System.out.println(cardlist.size());
-        // System.out.println(ran.nextInt(cardlist.size()));
-        // int a=ran.nextInt(cardlist.size());
-
-       /* for (int i = 1; i <= 52; i++)
+ 
+        /* for (int i = 1; i <= 52; i++)
         {
             int b = randomcard(cardlist);
             System.out.println(getcard(b, cardlist));
