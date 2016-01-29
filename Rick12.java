@@ -12,8 +12,7 @@ public class Rick12
         ArrayList<Integer> player3 = new ArrayList<Integer>();
         ArrayList<Integer> player4 = new ArrayList<Integer>();
         card(cardlist);
-
-        Scanner scn = new Scanner(System.in); // 玩家輸入
+        Scanner scn = new Scanner(System.in);
 
         for (int i = 1; i <= 5; i++)
         {
@@ -31,12 +30,8 @@ public class Rick12
         int total = 0;
         for (;;)
         {
-            System.out.println("我的手牌");
-            System.out.println("1.[" + player1.get(0) + "]    2.[" + player1.get(1) + "]    3.[" + player1.get(2)
-                    + "]    4.[" + player1.get(3) + "]    5.[" + player1.get(4) + "]");
-            System.out.print("輸入你的選擇(1~5): ");
-            int choose = scn.nextInt();
-            total += allplayer(player1, cardlist, 1, choose);
+
+            total += allplayer(player1, cardlist, 1, playerone(player1));
             System.out.println("目前分數: " + total);/// player1 total cardlist
             System.out.println("**********");
             if (total > 100)
@@ -75,6 +70,17 @@ public class Rick12
             System.out.println("-----------下一輪----------");
         }
 
+    }
+
+    public static int playerone(ArrayList<Integer> player)
+    {
+        Scanner scn = new Scanner(System.in); // 玩家輸入
+        System.out.println("我的手牌");
+        System.out.println("1.[" + player.get(0) + "]    2.[" + player.get(1) + "]    3.[" + player.get(2) + "]    4.["
+                + player.get(3) + "]    5.[" + player.get(4) + "]");
+        System.out.print("輸入你的選擇(1~5): ");
+        int choose = scn.nextInt();
+        return choose;
     }
 
     public static int allplayer(ArrayList<Integer> player, ArrayList<Integer> card_list, int playernumber, int choose)
