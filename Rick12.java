@@ -22,11 +22,11 @@ public class Rick12
             player3.add(getcard(cardlist));
             player4.add(getcard(cardlist));
         }
-        
+
         System.out.println("歡迎來到我的99遊戲");
-        System.out.println("請輸入你的姓名: ");
+        System.out.print("請輸入你的姓名: ");
         int name = scn.nextInt();
-        System.out.println("歡迎"+name);
+        System.out.println("歡迎" + name);
         System.out.println("--------------開始遊戲--------------");
         int total = 0;
         for (;;)
@@ -65,7 +65,7 @@ public class Rick12
 
             total += allplayer(player4, cardlist, 4, 1);
             System.out.println("目前分數: " + total);// player4 total cardlist
-            System.out.println("**********");
+
             if (total > 100)
             {
                 System.out.println("玩家4輸了!!!");
