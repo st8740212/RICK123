@@ -76,8 +76,11 @@ public class Rick12
     {
         Scanner scn = new Scanner(System.in); // 玩家輸入
         System.out.println("我的手牌");
-        System.out.println("1.[" + player.get(0) + "]    2.[" + player.get(1) + "]    3.[" + player.get(2) + "]    4.["
-                + player.get(3) + "]    5.[" + player.get(4) + "]");
+        for (int i = 1; i <= 5; i++)
+        {
+            System.out.print(" " + i + ".[" + player.get(i - 1) + "]");
+        }
+        System.out.println("");
         System.out.print("輸入你的選擇(1~5): ");
         int choose = scn.nextInt();
         return choose;
