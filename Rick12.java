@@ -69,7 +69,7 @@ public class Rick12
 
     }
 
-    public static int specialCard(int specialCard, int total)
+    public static int specialCard(int specialCard, int total)//特殊牌 10.11.12.13
     {
         Scanner scn = new Scanner(System.in);
         if (specialCard == 13)
