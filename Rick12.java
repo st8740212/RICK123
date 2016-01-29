@@ -69,15 +69,15 @@ public class Rick12
 
     }
 
-    public static int specialCard(int specialCard, int total)//特殊牌 10.11.12.13
+    public static int specialCard(int specialCard, int total)// 特殊牌 10.11.12.13
     {
         Scanner scn = new Scanner(System.in);
-        if (specialCard == 13)
+        switch (specialCard)
         {
+        case 13:
             total = 99;
-        } 
-        else if (specialCard == 12)
-        {
+            break;
+        case 12:
             System.out.print("請問要加20還減20(輸入 1=加，2=減): ");
             int choose = scn.nextInt();
             if (choose == 1)
@@ -87,25 +87,22 @@ public class Rick12
             {
                 total -= 20;
             }
-        } 
-        else if(specialCard == 11)
-        {
-            total +=0;
-        }
-        else if(specialCard == 10)
-        {
+            break;
+        case 11:
+            total += 0;
+            break;
+        case 10:
             System.out.print("請問要加10還減10(輸入 1=加，2=減): ");
-            int choose = scn.nextInt();
-            if (choose == 1)
+            int choose1 = scn.nextInt();
+            if (choose1 == 1)
             {
                 total += 10;
             } else
             {
                 total -= 10;
             }
-        }
-        else
-        {
+            break;
+        default:
             total = total + specialCard;
         }
         return total;
@@ -158,11 +155,11 @@ public class Rick12
         int number = getCard(card_list);
         player.remove(choose - 1);
         player.add(number);
-        if(playergetcard==4|playergetcard==5|playergetcard==10|playergetcard==11|playergetcard==12|playergetcard==13)
+        if (playergetcard == 4 | playergetcard == 5 | playergetcard == 10 | playergetcard == 11 | playergetcard == 12
+                | playergetcard == 13)
         {
-            System.out.println("玩家" + playerNumber + "出: " + "特殊牌"+playergetcard);
-        }
-        else
+            System.out.println("玩家" + playerNumber + "出: " + "特殊牌" + playergetcard);
+        } else
         {
             System.out.println("玩家" + playerNumber + "出: " + playergetcard);
         }
