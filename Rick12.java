@@ -64,21 +64,21 @@ public class Rick12
         }
 
     }
-    public static int turnPlayer(int player)
+
+    public static int turnPlayer(int player) //// 回傳位置數字
     {
-        int fourPlayer=player;
-        if(player==1||player==2||player==3)
+        int fourPlayer = player;
+        if (player == 1 || player == 2 || player == 3)
         {
-            fourPlayer+=1;
+            fourPlayer += 1;
+        } else if (player == 4)
+        {
+            fourPlayer = 1;
         }
-        else if(player==4){
-            fourPlayer =1;
-        }
-        
+
         return fourPlayer;
     }
-    
-    
+
     public static int computerSpecialCard(int specialCard, int total)
     {
         switch (specialCard)
