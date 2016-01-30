@@ -16,7 +16,7 @@ public class Rick12
         Scanner scn = new Scanner(System.in);
         playerCardList(cardList, player1, player2, player3, player4);
         orderPlayer(playerList);
-        rowOrder(playerList, 2);
+        GetNextPlayer(playerList, 2);
 
         // System.out.println("歡迎來到我的99遊戲");
         // System.out.print("請輸入你的姓名: ");
@@ -71,7 +71,7 @@ public class Rick12
 
     }
 
-    public static int rowOrder(ArrayList<Integer> rowPlayer, int number)
+    public static int GetNextPlayer(ArrayList<Integer> rowPlayer, int number)
     {
 
         int returnPlayer = 0;
