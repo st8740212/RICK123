@@ -34,39 +34,89 @@ public class Rick12
                 break;
             }
 
-            // total=specialCard_K( allPlayer(player2, cardList, 2,
-            // computer(player2, total)),total);
-            // System.out.println("目前分數: " + total);
-            // System.out.println("**********");
-            // if (total > 99)
-            // {
-            // System.out.println("玩家2輸了!!!");
-            // break;
-            // }
-            //
-            // total += allPlayer(player3, cardList, 3, computer(player3,
-            // total));
-            // System.out.println("目前分數: " + total);
-            // System.out.println("**********");
-            // if (total > 99)
-            // {
-            // System.out.println("玩家3輸了!!!");
-            // break;
-            // }
-            //
-            // total += allPlayer(player4, cardList, 4, computer(player4,
-            // total));
-            // System.out.println("目前分數: " + total);
-            //
-            // if (total > 99)
-            // {
-            // System.out.println("玩家4輸了!!!");
-            // break;
-            // }
+            total = computerSpecialCard(allPlayer(player2, cardList, 2, computer(player2, total)), total);
+            System.out.println("目前分數: " + total);
+            System.out.println("**********");
+            if (total > 99)
+            {
+                System.out.println("玩家2輸了!!!");
+                break;
+            }
+
+            total = computerSpecialCard(allPlayer(player3, cardList, 3, computer(player3, total)), total);
+            System.out.println("目前分數: " + total);
+            System.out.println("**********");
+            if (total > 99)
+            {
+                System.out.println("玩家3輸了!!!");
+                break;
+            }
+
+            total = computerSpecialCard(allPlayer(player4, cardList, 4, computer(player4, total)), total);
+            System.out.println("目前分數: " + total);
+            if (total > 99)
+            {
+                System.out.println("玩家4輸了!!!");
+                break;
+            }
 
             System.out.println("-----------下一輪----------");
         }
 
+    }
+    public static int turnPlayer(int player)
+    {
+        int fourPlayer=player;
+        if(player==1||player==2||player==3)
+        {
+            fourPlayer+=1;
+        }
+        else if(player==4){
+            fourPlayer =1;
+        }
+        
+        return fourPlayer;
+    }
+    
+    
+    public static int computerSpecialCard(int specialCard, int total)
+    {
+        switch (specialCard)
+        {
+        case 13:
+            total = 99;
+            break;
+        case 12:
+            if (total >= 80)
+            {
+                total -= 20;
+            } else if (total < 19)
+            {
+                total += 20;
+            } else
+            {
+                total += 20;
+            }
+            break;
+        case 11:
+            total += 0;
+            break;
+        case 10:
+            if (total >= 90)
+            {
+                total -= 10;
+            } else if (total < 9)
+            {
+                total += 10;
+            } else
+            {
+                total += 10;
+            }
+            break;
+        default:
+            total = total + specialCard;
+        }
+        return total;
     }
 
     public static int specialCard(int specialCard, int total)// 特殊牌 10.11.12.13
@@ -122,15 +172,62 @@ public class Rick12
 
     public static int computer(ArrayList<Integer> player, int total)
     {
-        int choose;
-        if (total <= 70)
+
+        int choose = 0;
+        for (int i = 4; i >= 0; i--)
         {
-            choose = 5;
-        } else
-        {
-            choose = 1;
+            Collections.sort(player);
+            switch (player.get(i))
+            {
+            case 12:
+                if (total > 80 || total > 70)
+                {
+                    choose = i;
+                } else
+                {
+                    break;
+                }
+
+            case 10:
+                if (total > 90 || total > 60)
+                {
+                    choose = i;
+                } else
+                {
+                    break;
+                }
+
+            case 11:
+                if (total > 90)
+                {
+                    choose = i;
+                } else
+                {
+                    break;
+                }
+            case 13:
+                if (total > 90 || player.get(i) - 1 != 12 || player.get(i) + 2 != 11 || player.get(i) + 3 != 10)
+                {
+                    choose = i;
+                } else
+                {
+                    break;
+                }
+            default:
+                if (total + player.get(i) > 100)
+                {
+                    choose = 0;
+                } else if (total < 50 && player.get(i) != 12 && player.get(i) != 11 && player.get(i) != 10
+                        && player.get(i) != 13)
+                {
+                    choose = 2;
+                } else
+                {
+                    choose = i;
+                }
+            }
         }
-        return choose;
+        return choose + 1;
     }
 
     public static int playerOne(ArrayList<Integer> player)
@@ -155,8 +252,7 @@ public class Rick12
         int number = getCard(card_list);
         player.remove(choose - 1);
         player.add(number);
-        if (playergetcard == 4 | playergetcard == 5 | playergetcard == 10 | playergetcard == 11 | playergetcard == 12
-                | playergetcard == 13)
+        if (playergetcard == 10 || playergetcard == 11 || playergetcard == 12 || playergetcard == 13)
         {
             System.out.println("玩家" + playerNumber + "出: " + "特殊牌" + playergetcard);
         } else
