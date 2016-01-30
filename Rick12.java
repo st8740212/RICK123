@@ -11,10 +11,11 @@ public class Rick12
         ArrayList<Integer> player2 = new ArrayList<Integer>();
         ArrayList<Integer> player3 = new ArrayList<Integer>();
         ArrayList<Integer> player4 = new ArrayList<Integer>();
+        ArrayList<Integer> fourPlayer= new ArrayList<Integer>();
         card(cardList);
         Scanner scn = new Scanner(System.in);
         playerCardList(cardList, player1, player2, player3, player4);
-
+        
         // System.out.println("歡迎來到我的99遊戲");
         // System.out.print("請輸入你的姓名: ");
         // int name = scn.nextInt();
@@ -22,7 +23,7 @@ public class Rick12
         // System.out.println("--------------開始遊戲--------------");
 
         int total = 0;
-
+        orderPlayer(player1, player2, player3, player4,fourPlayer);
         for (;;)
         {
             total = specialCard(allPlayer(player1, cardList, 1, playerOne(player1)), total);
@@ -34,49 +35,44 @@ public class Rick12
                 break;
             }
 
-            total = computerSpecialCard(allPlayer(player2, cardList, 2, computer(player2, total)), total);
-            System.out.println("目前分數: " + total);
-            System.out.println("**********");
-            if (total > 99)
-            {
-                System.out.println("玩家2輸了!!!");
-                break;
-            }
-
-            total = computerSpecialCard(allPlayer(player3, cardList, 3, computer(player3, total)), total);
-            System.out.println("目前分數: " + total);
-            System.out.println("**********");
-            if (total > 99)
-            {
-                System.out.println("玩家3輸了!!!");
-                break;
-            }
-
-            total = computerSpecialCard(allPlayer(player4, cardList, 4, computer(player4, total)), total);
-            System.out.println("目前分數: " + total);
-            if (total > 99)
-            {
-                System.out.println("玩家4輸了!!!");
-                break;
-            }
+//            total = computerSpecialCard(allPlayer(player2, cardList, 2, computer(player2, total)), total);
+//            System.out.println("目前分數: " + total);
+//            System.out.println("**********");
+//            if (total > 99)
+//            {
+//                System.out.println("玩家2輸了!!!");
+//                break;
+//            }
+//
+//            total = computerSpecialCard(allPlayer(player3, cardList, 3, computer(player3, total)), total);
+//            System.out.println("目前分數: " + total);
+//            System.out.println("**********");
+//            if (total > 99)
+//            {
+//                System.out.println("玩家3輸了!!!");
+//                break;
+//            }
+//
+//            total = computerSpecialCard(allPlayer(player4, cardList, 4, computer(player4, total)), total);
+//            System.out.println("目前分數: " + total);
+//            if (total > 99)
+//            {
+//                System.out.println("玩家4輸了!!!");
+//                break;
+//            }
 
             System.out.println("-----------下一輪----------");
         }
 
     }
 
-    public static int turnPlayer(int player) //// 回傳位置數字
+    public static void orderPlayer(ArrayList<Integer> player1, ArrayList<Integer> player2, ArrayList<Integer> player3,
+            ArrayList<Integer> player4,ArrayList<Integer> allPlayer) 
     {
-        int fourPlayer = player;
-        if (player == 1 || player == 2 || player == 3)
-        {
-            fourPlayer += 1;
-        } else if (player == 4)
-        {
-            fourPlayer = 1;
-        }
-
-        return fourPlayer;
+        allPlayer.addAll(player1);
+        allPlayer.addAll(player2);
+        allPlayer.addAll(player3);
+        allPlayer.addAll(player4);
     }
 
     public static int computerSpecialCard(int specialCard, int total)
