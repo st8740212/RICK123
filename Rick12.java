@@ -1,6 +1,8 @@
 import java.util.*;
 import java.util.Random;
 import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.Collections;
 
 public class Rick12
 {
@@ -16,7 +18,7 @@ public class Rick12
         Scanner scn = new Scanner(System.in);
         playerCardList(cardList, player1, player2, player3, player4);
         orderPlayer(playerList);
-        GetNextPlayer(playerList, 2);
+        GetNextPlayer(playerList, 3);
 
         // System.out.println("歡迎來到我的99遊戲");
         // System.out.print("請輸入你的姓名: ");
@@ -71,22 +73,30 @@ public class Rick12
 
     }
 
-    public static int GetNextPlayer(ArrayList<Integer> rowPlayer, int number)
+    public static int GetNextPlayer(ArrayList<Integer> player, int number)/// 1~3是指定，4是正常排序，5是迴轉
     {
 
-        int returnPlayer = 0;
-        if (number == 1)
+        int setPlayer = 0;
+        if (number == 4) //// 正常排序
         {
-            returnPlayer = rowPlayer.get(0);
-            rowPlayer.remove(0);
-            rowPlayer.add(returnPlayer);
-        } else if (number == 2)
+            setPlayer = player.get(0);
+            player.remove(0);
+            player.add(setPlayer);
+        } else if (number == 5) ///// 5號牌-迴轉
         {
-            returnPlayer = rowPlayer.get(2);
-            Collection.swap(rowPlayer,0,2); 
-            
+            setPlayer = player.get(2);
+            Collections.swap(player, 0, 2);
+        } else /// 4號牌-指定
+        {
+            setPlayer = number;
+            for (int i = 1; i <= number; i++)
+            {
+                int setPlayer1 = player.get(0);
+                player.remove(0);
+                player.add(setPlayer1);
+            }
         }
-        return returnPlayer;
+        return setPlayer;
     }
 
     public static void orderPlayer(ArrayList<Integer> allPlayer)
