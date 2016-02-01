@@ -17,8 +17,8 @@ public class Rick12
         card(cardList);
         Scanner scn = new Scanner(System.in);
         playerCardList(cardList, player1, player2, player3, player4);
-        orderPlayer(playerList);
-        GetNextPlayer(playerList, 3);
+        setPlayer(playerList);
+        getPlayer(playerList, 2, player1, player2, player3, player4);
 
         // System.out.println("歡迎來到我的99遊戲");
         // System.out.print("請輸入你的姓名: ");
@@ -73,33 +73,50 @@ public class Rick12
 
     }
 
-    public static int GetNextPlayer(ArrayList<Integer> player, int number)/// 1~3是指定，4是正常排序，5是迴轉
+    public static ArrayList<Integer> getPlayer(ArrayList<Integer> playerLList, int number, ArrayList<Integer> player1,
+            ArrayList<Integer> player2, ArrayList<Integer> player3, ArrayList<Integer> player4)/// 1~3是指定，4是正常排序，5是迴轉
     {
 
-        int setPlayer = 0;
+        int Player = 0;
         if (number == 4) //// 正常排序
         {
-            setPlayer = player.get(0);
-            player.remove(0);
-            player.add(setPlayer);
+            Player = playerLList.get(0);
+            playerLList.remove(0);
+            playerLList.add(Player);
         } else if (number == 5) ///// 5號牌-迴轉
         {
-            setPlayer = player.get(2);
-            Collections.swap(player, 0, 2);
+            Player = playerLList.get(2);
+            Collections.swap(playerLList, 0, 2);
         } else /// 4號牌-指定
         {
-            setPlayer = number;
+            Player = number;
             for (int i = 1; i <= number; i++)
             {
-                int setPlayer1 = player.get(0);
-                player.remove(0);
-                player.add(setPlayer1);
+                int setPlayer1 = playerLList.get(0);
+                playerLList.remove(0);
+                playerLList.add(setPlayer1);
             }
         }
-        return setPlayer;
+        ArrayList<Integer> returnPlayer = null;
+        switch (Player)
+        {
+        case 1:
+            returnPlayer = player1;
+            break;
+        case 2:
+            returnPlayer = player2;
+            break;
+        case 3:
+            returnPlayer = player3;
+            break;
+        case 4:
+            returnPlayer = player4;
+            break;
+        }
+        return returnPlayer;
     }
 
-    public static void orderPlayer(ArrayList<Integer> allPlayer)
+    public static void setPlayer(ArrayList<Integer> allPlayer)
     {
         for (int i = 1; i < 5; i++)
         {
