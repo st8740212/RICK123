@@ -37,9 +37,9 @@ public class Rick12
             System.out.println(templist);
             ArrayList<Integer> templist1 = getPlayer(playerList, 3, player1, player2, player3, player4);
             System.out.println(templist1);
-            ArrayList<Integer> templist2 = getPlayer(playerList, 3, player1, player2, player3, player4);
+            ArrayList<Integer> templist2 = getPlayer(playerList, 5, player1, player2, player3, player4);
             System.out.println(templist2);
-            ArrayList<Integer> templist3 = getPlayer(playerList,3, player1, player2, player3, player4);
+            ArrayList<Integer> templist3 = getPlayer(playerList,1, player1, player2, player3, player4);
             System.out.println(templist3);
             
             
