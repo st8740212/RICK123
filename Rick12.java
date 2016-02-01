@@ -18,6 +18,11 @@ public class Rick12
         Scanner scn = new Scanner(System.in);
         playerCardList(cardList, player1, player2, player3, player4);
         setPlayer(playerList);
+        int total = 0;
+        int number = 4;
+        ArrayList<Integer> tempList = getPlayer(playerList, number, player1, player2, player3, player4);
+        int computer = computer(tempList, total);
+        int allPlayer = allPlayer(tempList, cardList, playerList.get(3), computer);
 
         // System.out.println("歡迎來到我的99遊戲");
         // System.out.print("請輸入你的姓名: ");
@@ -25,10 +30,6 @@ public class Rick12
         // System.out.println("歡迎" + name);
         // System.out.println("--------------開始遊戲--------------");
 
-        int total = 0;
-        int number = 4;
-        ArrayList<Integer> tempList = getPlayer(playerList, 4, player1, player2, player3, player4);
-        int computer = computer(player2, total);
         for (;;)
         {
             // total = specialCard(allPlayer(player1, cardList, 1,
@@ -42,7 +43,7 @@ public class Rick12
             // break;
             // }
 
-            total = computerSpecialCard(allPlayer(tempList, cardList, playerList.get(3), computer), total);
+            total = computerSpecialCard(allPlayer, total);
 
             System.out.println("目前分數: " + total);
             System.out.println("**********");
