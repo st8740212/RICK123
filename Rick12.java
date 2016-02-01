@@ -25,14 +25,14 @@ public class Rick12
         // System.out.println("歡迎" + name);
         // System.out.println("--------------開始遊戲--------------");
         int total = 0;
-        
-        
+
         for (;;)
         {
-            int number =4;
+            int number = 4;
             ArrayList<Integer> tempList = getPlayer(playerList, number, player1, player2, player3, player4);
-            int allPlayer = allPlayer(tempList, cardList, playerList.get(3), computer(tempList, total));
-            
+            int computer = computer(tempList, total);
+            int allPlayer = allPlayer(tempList, cardList, playerList.get(3), computer);
+
             // total = specialCard(allPlayer(player1, cardList, 1,
             // playerOne(player1)),
             // total);
