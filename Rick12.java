@@ -25,69 +25,58 @@ public class Rick12
         // System.out.println("歡迎" + name);
         // System.out.println("--------------開始遊戲--------------");
         int total = 0;
-        int setAllPlayer = 0;
+        int intPeoplePlayer = 0;
+        int intComputerPlayer = 0;
         for (;;)
         {
+            ArrayList<Integer> tempList = getPlayer(playerList, number(intComputerPlayer, intPeoplePlayer), player1,
+                    player2, player3, player4);
+            
 
-            ArrayList<Integer> tempList = getPlayer(playerList, number(setAllPlayer), player1, player2, player3,
-                    player4);
-            int selectComputer = computer(tempList, total);
-            setAllPlayer = allPlayer(tempList, cardList, playerList.get(3), selectComputer);
-
-            // total = specialCard(allPlayer(player1, cardList, 1,
-            // playerOne(player1)),
-            // total);
-            // System.out.println("目前分數: " + total);
-            // System.out.println("**********");
-            // if (total > 99)
-            // {
-            // System.out.println("玩家1輸了!!!");
-            // break;
-            // }
-
-            total = computerSpecialCard(setAllPlayer, total);
-            System.out.println("目前分數: " + total);
-            System.out.println("**********");
-            if (total > 99)
+            if (tempList == player1)
             {
-                System.out.println("玩家" + playerList.get(3) + "輸了!!!");
-                break;
+                intPeoplePlayer = specialCard(allPlayer(tempList, cardList, 1, playerOne(player1)), total);
+                total = intPeoplePlayer;
+                System.out.println("目前分數: " + total);
+                System.out.println("**********");
+                if (total > 99)
+                {
+                    System.out.println("玩家1輸了!!!");
+                    break;
+                }
+            } else
+            {
+                int selectComputer = computer(tempList, total);
+                intComputerPlayer = allPlayer(tempList, cardList, playerList.get(3), selectComputer);
+                total = computerSpecialCard(intComputerPlayer, total);
+                System.out.println("目前分數: " + total);
+                System.out.println("**********");
+                if (total > 99)
+                {
+                    System.out.println("玩家" + playerList.get(3) + "輸了!!!");
+                    break;
+                }
             }
-            //
-            // total = computerSpecialCard(allPlayer(player3, cardList, 3,
-            // computer(player3, total)), total);
-            // System.out.println("目前分數: " + total);
-            // System.out.println("**********");
-            // if (total > 99)
-            // {
-            // System.out.println("玩家3輸了!!!");
-            // break;
-            // }
-            //
-            // total = computerSpecialCard(allPlayer(player4, cardList, 4,
-            // computer(player4, total)), total);
-            // System.out.println("目前分數: " + total);
-            // if (total > 99)
-            // {
-            // System.out.println("玩家4輸了!!!");
-            // // break;
-            // // }
-            //
-            // System.out.println("-----------下一輪----------");
         }
 
     }
 
-    public static int number(int number)
+    public static int number(int number1, int number2)
     {
         int player = 4;
-        if (number == 5)
+        if (number1 == 5 || number2 == 5)// 迴轉
         {
             player = 5;
-        } else if (number == 4)
+        } else if (number1 == 4)// 指定
         {
             Random ran = new Random();
             player = ran.nextInt(3) + 1;
+        } else if (number2 == 4)// 指定
+        {
+            Scanner scn = new Scanner(System.in);
+            System.out.print("請問要指定哪位玩家(輸入 1~3，要注意反轉順序!!): ");
+            int choose = scn.nextInt();
+            player = choose;
         } else
         {
             player = 4;
@@ -95,31 +84,29 @@ public class Rick12
         return player;
     }
 
-    public static ArrayList<Integer> getPlayer(ArrayList<Integer> playerLList, int number, ArrayList<Integer> player1,
+    public static ArrayList<Integer> getPlayer(ArrayList<Integer> playerList, int number, ArrayList<Integer> player1,
             ArrayList<Integer> player2, ArrayList<Integer> player3, ArrayList<Integer> player4)/// 1~3是指定，4是正常排序，5是迴轉
     {
-
         int Player = 0;
         if (number == 4) //// 正常排序
         {
-            Player = playerLList.get(0);
-            playerLList.remove(0);
-            playerLList.add(Player);
+            Player = playerList.get(0);
+            playerList.remove(0);
+            playerList.add(Player);
         } else if (number == 5) ///// 5號牌-迴轉
         {
-            
-            Collections.swap(playerLList, 0, 2);
-            Player = playerLList.get(0);
-            playerLList.remove(0);
-            playerLList.add(Player);
+            Collections.swap(playerList, 0, 2);
+            Player = playerList.get(0);
+            playerList.remove(0);
+            playerList.add(Player);
         } else /// 4號牌-指定
         {
-            Player = number;
             for (int i = 1; i <= number; i++)
             {
-                int setPlayer1 = playerLList.get(0);
-                playerLList.remove(0);
-                playerLList.add(setPlayer1);
+                int setPlayer = playerList.get(0);
+                playerList.remove(0);
+                playerList.add(setPlayer);
+                Player = playerList.get(3);
             }
         }
         ArrayList<Integer> returnPlayer = null;
@@ -195,7 +182,7 @@ public class Rick12
         return total;
     }
 
-    public static int specialCard(int specialCard, int total)// 特殊牌 10.11.12.13
+    public static int specialCard(int specialCard, int total)
     {
         Scanner scn = new Scanner(System.in);
         switch (specialCard)
@@ -227,6 +214,12 @@ public class Rick12
             {
                 total -= 10;
             }
+            break;
+        case 5:
+            total += 0;
+            break;
+        case 4:
+            total += 0;
             break;
         default:
             total = total + specialCard;
@@ -281,14 +274,7 @@ public class Rick12
                 {
                     break;
                 }
-            case 13:
-                if (total > 90 || player.get(i) - 1 != 12 || player.get(i) + 2 != 11 || player.get(i) + 3 != 10)
-                {
-                    choose = i;
-                } else
-                {
-                    break;
-                }
+
             default:
                 if (total + player.get(i) > 100)
                 {
@@ -328,7 +314,8 @@ public class Rick12
         int number = getCard(card_list);
         player.remove(choose - 1);
         player.add(number);
-        if (playergetcard == 10 || playergetcard == 11 || playergetcard == 12 || playergetcard == 13|| playergetcard ==4|| playergetcard ==5)
+        if (playergetcard == 10 || playergetcard == 11 || playergetcard == 12 || playergetcard == 13
+                || playergetcard == 4 || playergetcard == 5)
         {
             System.out.println("玩家" + playerNumber + "出: " + "特殊牌" + playergetcard);
         } else
