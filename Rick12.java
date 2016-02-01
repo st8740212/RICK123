@@ -20,9 +20,6 @@ public class Rick12
         setPlayer(playerList);
         int total = 0;
         int number = 4;
-        ArrayList<Integer> tempList = getPlayer(playerList, number, player1, player2, player3, player4);
-        int computer = computer(tempList, total);
-        int allPlayer = allPlayer(tempList, cardList, playerList.get(3), computer);
 
         // System.out.println("歡迎來到我的99遊戲");
         // System.out.print("請輸入你的姓名: ");
@@ -43,7 +40,10 @@ public class Rick12
             // break;
             // }
 
-            total = computerSpecialCard(allPlayer, total);
+            total = computerSpecialCard(allPlayer(getPlayer(playerList, number, player1, player2, player3, player4),
+                    cardList, 2, 
+                    computer(getPlayer(playerList, number, player1, player2, player3, player4), total)),
+                    total);
 
             System.out.println("目前分數: " + total);
             System.out.println("**********");
