@@ -34,7 +34,7 @@ public class Rick12
 
             if (tempList == player1)
             {
-                intPlayerOne = allPlayerGetCard(tempList, cardList, 1, playerOneChoose(player1));
+                intPlayerOne = licensing(tempList, cardList, 1, playerOneChoose(player1));
                 total = specialCard(intPlayerOne, total);
                 intComputerPlayer = 0;
                 System.out.println("目前分數: " + total);
@@ -48,7 +48,7 @@ public class Rick12
             else
             {
                 int selectComputer = computer(tempList, total);
-                intComputerPlayer = allPlayerGetCard(tempList, cardList, sequencePlayerList.get(3), selectComputer);
+                intComputerPlayer = licensing(tempList, cardList, sequencePlayerList.get(3), selectComputer);
                 total = computerSpecialCard(intComputerPlayer, total);
                 intPlayerOne = 0;
                 System.out.println("目前分數: " + total);
@@ -330,7 +330,7 @@ public class Rick12
         return choose;
     }
 
-    public static int allPlayerGetCard(ArrayList<Integer> player, ArrayList<Integer> card_list, int playerNumber, int choose)
+    public static int licensing(ArrayList<Integer> player, ArrayList<Integer> card_list, int playerNumber, int choose)
     {
         Collections.sort(player);
         int playergetcard = player.get(choose - 1);
