@@ -34,12 +34,23 @@ public class Rick13
        System.out.println();
        System.out.println(cardlist.size());
        
-       System.out.println(getcard(cardlist));
+       System.out.println(getCard(cardlist));
        System.out.println(cardlist.size());
        for (int a = 0; a < cardlist.size(); a++)
        {
            System.out.print("  " + cardlist.get(a));
        }
        System.out.println();
+       
+       
+       
+       ///////////////玩家1
+       
+       System.out.println("1.[" + player1.get(0) + "]    2.[" + player1.get(1) + "]    3.[" + player1.get(2)
+       + "]    4.[" + player1.get(3) + "]    5.[" + player1.get(4) + "]");
+System.out.print("輸入你的選擇(1~5): ");
+int choose = scn.nextInt();
+
+
      }
 }
