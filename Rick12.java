@@ -24,9 +24,12 @@ public class Rick12
         // String name = scn.nextLine();
         // System.out.println("歡迎" + name);
         // System.out.println("--------------開始遊戲--------------");
+
         int total = 0;
         int intPlayerUser = 0;
         int intComputerPlayer = 0;
+        int user_player_number = 1;
+        int AI_Player_Number = 3;
         for (;;)
         {
             ArrayList<Integer> Set_SpecialCard_Turn_Place = specialCard_Turn_Place(sequencePlayerList, sequenceNumber(intComputerPlayer, intPlayerUser), player1,
@@ -34,9 +37,10 @@ public class Rick12
 
             if (Set_SpecialCard_Turn_Place == player1)
             {
-                intPlayerUser = playOutCard(Set_SpecialCard_Turn_Place, cardList, 1, playerUserChoose(player1));
+                intPlayerUser = playOutCard(Set_SpecialCard_Turn_Place, cardList, user_player_number, playerUserChoose(player1));
                 total = UserChooseSpecialCard(intPlayerUser, total);
                 intComputerPlayer = 0;
+                
                 System.out.println("目前分數: " + total);
                 System.out.println("**********");
                 if (total > 99)
@@ -48,14 +52,15 @@ public class Rick12
             else
             {
                 int selectComputer = AIChooseCard(Set_SpecialCard_Turn_Place, total);
-                intComputerPlayer = playOutCard(Set_SpecialCard_Turn_Place, cardList, sequencePlayerList.get(3), selectComputer);
+                intComputerPlayer = playOutCard(Set_SpecialCard_Turn_Place, cardList, sequencePlayerList.get(AI_Player_Number), selectComputer);
                 total = AIChooseSpecialCard(intComputerPlayer, total);
                 intPlayerUser = 0;
+                
                 System.out.println("目前分數: " + total);
                 System.out.println("**********");
                 if (total > 99)
                 {
-                    System.out.println("玩家" + sequencePlayerList.get(3) + "輸了!!!");
+                    System.out.println("玩家" + sequencePlayerList.get(AI_Player_Number) + "輸了!!!");
                     break;
                 }
             }
