@@ -34,7 +34,7 @@ public class Rick13
        System.out.println();
        System.out.println(cardlist.size());
        
-       System.out.println(getCard(cardlist));
+       System.out.println(shuffleCard(cardlist));
        System.out.println(cardlist.size());
        for (int a = 0; a < cardlist.size(); a++)
        {

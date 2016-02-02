@@ -14,7 +14,7 @@ public class Rick12
         ArrayList<Integer> player3 = new ArrayList<Integer>();
         ArrayList<Integer> player4 = new ArrayList<Integer>();
         ArrayList<Integer> sequencePlayerList = new ArrayList<Integer>();
-        card(cardList);
+        cardDeck(cardList);
         Scanner scn = new Scanner(System.in);
         playerCardList(cardList, player1, player2, player3, player4);
         setPlayerNumber(sequencePlayerList);
@@ -25,17 +25,17 @@ public class Rick12
         // System.out.println("歡迎" + name);
         // System.out.println("--------------開始遊戲--------------");
         int total = 0;
-        int intPlayerOne = 0;
+        int intPlayerUser = 0;
         int intComputerPlayer = 0;
         for (;;)
         {
-            ArrayList<Integer> tempList = drawPlayer(sequencePlayerList, sequenceNumber(intComputerPlayer, intPlayerOne), player1,
+            ArrayList<Integer> Set_SpecialCard_Turn_Place = specialCard_Turn_Place(sequencePlayerList, sequenceNumber(intComputerPlayer, intPlayerUser), player1,
                     player2, player3, player4);
 
-            if (tempList == player1)
+            if (Set_SpecialCard_Turn_Place == player1)
             {
-                intPlayerOne = licensing(tempList, cardList, 1, playerOneChoose(player1));
-                total = peopleChooseSpecialCard(intPlayerOne, total);
+                intPlayerUser = playOutCard(Set_SpecialCard_Turn_Place, cardList, 1, playerUserChoose(player1));
+                total = UserChooseSpecialCard(intPlayerUser, total);
                 intComputerPlayer = 0;
                 System.out.println("目前分數: " + total);
                 System.out.println("**********");
@@ -47,10 +47,10 @@ public class Rick12
             }
             else
             {
-                int selectComputer = computerChooseCard(tempList, total);
-                intComputerPlayer = licensing(tempList, cardList, sequencePlayerList.get(3), selectComputer);
-                total = computerChooseSpecialCard(intComputerPlayer, total);
-                intPlayerOne = 0;
+                int selectComputer = AIChooseCard(Set_SpecialCard_Turn_Place, total);
+                intComputerPlayer = playOutCard(Set_SpecialCard_Turn_Place, cardList, sequencePlayerList.get(3), selectComputer);
+                total = AIChooseSpecialCard(intComputerPlayer, total);
+                intPlayerUser = 0;
                 System.out.println("目前分數: " + total);
                 System.out.println("**********");
                 if (total > 99)
@@ -93,7 +93,7 @@ public class Rick12
         return player;
     }
 
-    public static ArrayList<Integer> drawPlayer(ArrayList<Integer> playerList, int number, ArrayList<Integer> player1,
+    public static ArrayList<Integer> specialCard_Turn_Place(ArrayList<Integer> playerList, int number, ArrayList<Integer> player1,
             ArrayList<Integer> player2, ArrayList<Integer> player3, ArrayList<Integer> player4)/// 1~3是指定，4是正常排序，5是迴轉
     {
         int Player = 0;
@@ -140,15 +140,15 @@ public class Rick12
         return returnPlayer;
     }
 
-    public static void setPlayerNumber(ArrayList<Integer> allPlayer)
+    public static void setPlayerNumber(ArrayList<Integer> playerCard)
     {
         for (int i = 1; i < 5; i++)
         {
-            allPlayer.add(i);
+            playerCard.add(i);
         }
     }
 
-    public static int computerChooseSpecialCard(int specialCard, int total)
+    public static int AIChooseSpecialCard(int specialCard, int total)
     {
         switch (specialCard)
         {
@@ -198,7 +198,7 @@ public class Rick12
         return total;
     }
 
-    public static int peopleChooseSpecialCard(int specialCard, int total)
+    public static int UserChooseSpecialCard(int specialCard, int total)
     {
         Scanner scn = new Scanner(System.in);
         switch (specialCard)
@@ -250,24 +250,24 @@ public class Rick12
     {
         for (int i = 1; i <= 5; i++)
         {
-            player1.add(getCard(cardList));
-            player2.add(getCard(cardList));
-            player3.add(getCard(cardList));
-            player4.add(getCard(cardList));
+            player1.add(shuffleCard(cardList));
+            player2.add(shuffleCard(cardList));
+            player3.add(shuffleCard(cardList));
+            player4.add(shuffleCard(cardList));
         }
     }
 
-    public static int computerChooseCard(ArrayList<Integer> player, int total)
+    public static int AIChooseCard(ArrayList<Integer> player, int total)
     {
 
-        int choose = 0;
+        int choose = 3;
         for (int i = 4; i >= 0; i--)
         {
             Collections.sort(player);
             switch (player.get(i))
             {
             case 12:
-                if (total > 80 || total > 70)
+                if (total >= 80 || total >= 70)
                 {
                     choose = i;
                 }
@@ -277,7 +277,7 @@ public class Rick12
                 }
 
             case 10:
-                if (total > 90 || total > 60)
+                if (total >= 90 || total >= 60)
                 {
                     choose = i;
                 }
@@ -287,7 +287,7 @@ public class Rick12
                 }
 
             case 11:
-                if (total > 90)
+                if (total >= 90)
                 {
                     choose = i;
                 }
@@ -295,26 +295,52 @@ public class Rick12
                 {
                     break;
                 }
-
-            default:
-                if (total + player.get(i) > 100)
-                {
-                    choose = 0;
-                }
-                else if (total < 50 && player.get(i) != 12 && player.get(i) != 11 && player.get(i) != 10)
-                {
-                    choose = 2;
-                }
-                else
+            case 13:
+                if (total >= 90)
                 {
                     choose = i;
                 }
+                else
+                {
+                    break;
+                }
+            case 5:
+                if (total >= 90)
+                {
+                    choose = i;
+                }
+                else
+                {
+                    break;
+                }
+            case 4:
+                if (total >= 90)
+                {
+                    choose = i;
+                }
+                else
+                {
+                    break;
+                }
             }
+            if (total + player.get(i) > 80)
+            {
+                choose = 4;
+            }
+            else if (total < 50 && player.get(i) != 11 && player.get(i) != 4 && player.get(i) != 5)
+            {
+                choose = 3;
+            }
+            else if (total > 50 && total <= 80)
+            {
+                choose = 2;
+            }
+
         }
         return choose + 1;
     }
 
-    public static int playerOneChoose(ArrayList<Integer> player)
+    public static int playerUserChoose(ArrayList<Integer> player)
     {
         Scanner scn = new Scanner(System.in);
         System.out.println("我的手牌");
@@ -329,11 +355,11 @@ public class Rick12
         return choose;
     }
 
-    public static int licensing(ArrayList<Integer> player, ArrayList<Integer> card_list, int playerNumber, int choose)
+    public static int playOutCard(ArrayList<Integer> player, ArrayList<Integer> card_list, int playerNumber, int choose)
     {
         Collections.sort(player);
         int playergetcard = player.get(choose - 1);
-        int number = getCard(card_list);
+        int number = shuffleCard(card_list);
         player.remove(choose - 1);
         player.add(number);
         if (playergetcard == 10 || playergetcard == 11 || playergetcard == 12 || playergetcard == 13
@@ -348,23 +374,24 @@ public class Rick12
         return playergetcard;
     }
 
-    public static void card(ArrayList<Integer> templist)
+    public static void cardDeck(ArrayList<Integer> cardList)
     {
         for (int i = 1; i <= 4; i++)
         {
             for (int j = 1; j <= 13; j++)
             {
-                templist.add(j);
+                cardList.add(j);
             }
         }
     }
 
-    public static int getCard(ArrayList<Integer> templist)
+    public static int shuffleCard(ArrayList<Integer> cardList)
     {
         Random ran = new Random();
-        int temp = ran.nextInt(templist.size());
-        int number = templist.get(temp);
-        templist.remove(temp);
+        int temp = ran.nextInt(cardList.size());
+        int number = cardList.get(temp);
+        cardList.remove(temp);
+        cardList.add(number);
         return number;
     }
 }
