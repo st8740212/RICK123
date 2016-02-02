@@ -19,11 +19,11 @@ public class Rick12
         playerCardList(cardList, player1, player2, player3, player4);
         setPlayer(playerList);
 
-        // System.out.println("歡迎來到我的99遊戲");
-        // System.out.print("請輸入你的姓名: ");
-        // int name = scn.nextInt();
-        // System.out.println("歡迎" + name);
-        // System.out.println("--------------開始遊戲--------------");
+        System.out.println("歡迎來到我的99遊戲");
+        System.out.print("請輸入你的姓名: ");
+        int name = scn.nextInt();
+        System.out.println("歡迎" + name);
+        System.out.println("--------------開始遊戲--------------");
         int total = 0;
         int intPeoplePlayer = 0;
         int intComputerPlayer = 0;
@@ -31,12 +31,12 @@ public class Rick12
         {
             ArrayList<Integer> tempList = getPlayer(playerList, number(intComputerPlayer, intPeoplePlayer), player1,
                     player2, player3, player4);
-            
 
             if (tempList == player1)
             {
-                intPeoplePlayer = specialCard(allPlayer(tempList, cardList, 1, playerOne(player1)), total);
-                total = intPeoplePlayer;
+                intPeoplePlayer = allPlayer(tempList, cardList, 1, playerOne(player1));
+                total = specialCard(intPeoplePlayer, total);
+                intComputerPlayer = 0;
                 System.out.println("目前分數: " + total);
                 System.out.println("**********");
                 if (total > 99)
@@ -49,6 +49,7 @@ public class Rick12
                 int selectComputer = computer(tempList, total);
                 intComputerPlayer = allPlayer(tempList, cardList, playerList.get(3), selectComputer);
                 total = computerSpecialCard(intComputerPlayer, total);
+                intPeoplePlayer = 0;
                 System.out.println("目前分數: " + total);
                 System.out.println("**********");
                 if (total > 99)
@@ -64,7 +65,11 @@ public class Rick12
     public static int number(int number1, int number2)
     {
         int player = 4;
-        if (number1 == 5 || number2 == 5)// 迴轉
+
+        if (number1 == 5)// 迴轉
+        {
+            player = 5;
+        } else if (number2 == 5)
         {
             player = 5;
         } else if (number1 == 4)// 指定
@@ -95,10 +100,11 @@ public class Rick12
             playerList.add(Player);
         } else if (number == 5) ///// 5號牌-迴轉
         {
+            Player = playerList.get(2);
             Collections.swap(playerList, 0, 2);
-            Player = playerList.get(0);
             playerList.remove(0);
             playerList.add(Player);
+
         } else /// 4號牌-指定
         {
             for (int i = 1; i <= number; i++)
@@ -106,8 +112,8 @@ public class Rick12
                 int setPlayer = playerList.get(0);
                 playerList.remove(0);
                 playerList.add(setPlayer);
-                Player = playerList.get(3);
             }
+            Player = playerList.get(3);
         }
         ArrayList<Integer> returnPlayer = null;
         switch (Player)
