@@ -19,11 +19,11 @@ public class Rick12
         playerCardList(cardList, player1, player2, player3, player4);
         setPlayerNumber(sequencePlayerList);
 
-        System.out.println("歡迎來到我的99遊戲");
-        System.out.print("請輸入你的姓名: ");
-        int name = scn.nextInt();
-        System.out.println("歡迎" + name);
-        System.out.println("--------------開始遊戲--------------");
+        // System.out.println("歡迎來到我的99遊戲");
+        // System.out.print("請輸入你的姓名: ");
+        // String name = scn.nextLine();
+        // System.out.println("歡迎" + name);
+        // System.out.println("--------------開始遊戲--------------");
         int total = 0;
         int intPlayerOne = 0;
         int intComputerPlayer = 0;
@@ -35,7 +35,7 @@ public class Rick12
             if (tempList == player1)
             {
                 intPlayerOne = licensing(tempList, cardList, 1, playerOneChoose(player1));
-                total = specialCard(intPlayerOne, total);
+                total = peopleChooseSpecialCard(intPlayerOne, total);
                 intComputerPlayer = 0;
                 System.out.println("目前分數: " + total);
                 System.out.println("**********");
@@ -47,9 +47,9 @@ public class Rick12
             }
             else
             {
-                int selectComputer = computer(tempList, total);
+                int selectComputer = computerChooseCard(tempList, total);
                 intComputerPlayer = licensing(tempList, cardList, sequencePlayerList.get(3), selectComputer);
-                total = computerSpecialCard(intComputerPlayer, total);
+                total = computerChooseSpecialCard(intComputerPlayer, total);
                 intPlayerOne = 0;
                 System.out.println("目前分數: " + total);
                 System.out.println("**********");
@@ -148,7 +148,7 @@ public class Rick12
         }
     }
 
-    public static int computerSpecialCard(int specialCard, int total)
+    public static int computerChooseSpecialCard(int specialCard, int total)
     {
         switch (specialCard)
         {
@@ -198,7 +198,7 @@ public class Rick12
         return total;
     }
 
-    public static int specialCard(int specialCard, int total)
+    public static int peopleChooseSpecialCard(int specialCard, int total)
     {
         Scanner scn = new Scanner(System.in);
         switch (specialCard)
@@ -257,7 +257,7 @@ public class Rick12
         }
     }
 
-    public static int computer(ArrayList<Integer> player, int total)
+    public static int computerChooseCard(ArrayList<Integer> player, int total)
     {
 
         int choose = 0;
@@ -301,8 +301,7 @@ public class Rick12
                 {
                     choose = 0;
                 }
-                else if (total < 50 && player.get(i) != 12 && player.get(i) != 11 && player.get(i) != 10
-                        && player.get(i) != 13)
+                else if (total < 50 && player.get(i) != 12 && player.get(i) != 11 && player.get(i) != 10)
                 {
                     choose = 2;
                 }
@@ -368,5 +367,4 @@ public class Rick12
         templist.remove(temp);
         return number;
     }
-
 }
