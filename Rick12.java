@@ -28,7 +28,7 @@ public class Rick12
         int intComputerPlayer = 0;
         for (;;)
         {
-            ArrayList<Integer> Set_SpecialCard_Turn_Place = specialCard_Turn_Place(sequencePlayerList, sequenceNumber(intComputerPlayer, intPlayerUser), playerList);
+            ArrayList<Integer> Set_SpecialCard_Turn_Place = Special_Card_Turn_Place(sequencePlayerList, sequenceNumber(intComputerPlayer, intPlayerUser), playerList);
 
             if (Set_SpecialCard_Turn_Place == playerList.get(0))
             {
@@ -118,7 +118,7 @@ public class Rick12
         return player;
     }
 
-    public static ArrayList<Integer> specialCard_Turn_Place(ArrayList<Integer> playerList1, int number, ArrayList<ArrayList<Integer>> player)/// 1~3是指定，4是正常排序，5是迴轉
+    public static ArrayList<Integer> Special_Card_Turn_Place(ArrayList<Integer> playerList1, int number, ArrayList<ArrayList<Integer>> player)/// 1~3是指定，4是正常排序，5是迴轉
     {
         int setPlayer = 0;
         if (number == 4) //// 正常排序
