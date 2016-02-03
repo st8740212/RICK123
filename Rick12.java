@@ -17,12 +17,12 @@ public class Rick12
         playerCardList(cardList, playerList);
         setPlayerNumber(sequencePlayerList);
 
-//        System.out.println("歡迎來到我的99遊戲");
-//        System.out.print("請輸入你的姓名: ");
-//        String name = scn.nextLine();
-//        System.out.println("歡迎" + name);
-//        System.out.println("輸入'0'即可立即結束遊戲喔~~");
-//        System.out.println("--------------開始遊戲--------------");
+        // System.out.println("歡迎來到我的99遊戲");
+        // System.out.print("請輸入你的姓名: ");
+        // String name = scn.nextLine();
+        // System.out.println("歡迎" + name);
+        // System.out.println("輸入'0'即可立即結束遊戲喔~~");
+        // System.out.println("--------------開始遊戲--------------");
         int total = 0;
         int Set_Special_Card_Variable = 1;
         int intPlayerUser = 0;
@@ -34,7 +34,7 @@ public class Rick12
             if (Set_SpecialCard_Turn_Place == playerList.get(0))
             {
                 intPlayerUser = playOutCard(Set_SpecialCard_Turn_Place, cardList, 1, playerUserChoose(playerList.get(0)));
-                Set_Special_Card_Variable = Special_Card_Variable(sequencePlayerList, sequenceNumber(intComputerPlayer, intPlayerUser));
+                Set_Special_Card_Variable = Special_Card_Variable(sequencePlayerList, userSequenceNumber(intPlayerUser));
                 total = UserChooseSpecialCard(intPlayerUser, total);
                 intComputerPlayer = 0;
                 System.out.println("目前分數: " + total);
@@ -63,7 +63,7 @@ public class Rick12
             {
                 int selectComputer = AIChooseCard(Set_SpecialCard_Turn_Place, total);
                 intComputerPlayer = playOutCard(Set_SpecialCard_Turn_Place, cardList, sequencePlayerList.get(3), selectComputer);
-                Set_Special_Card_Variable = Special_Card_Variable(sequencePlayerList, sequenceNumber(intComputerPlayer, intPlayerUser));
+                Set_Special_Card_Variable = Special_Card_Variable(sequencePlayerList, AISequenceNumber(intComputerPlayer));
                 total = AIChooseSpecialCard(intComputerPlayer, total);
                 intPlayerUser = 0;
                 System.out.println("目前分數: " + total);
@@ -80,27 +80,38 @@ public class Rick12
     public static void setplayerList(ArrayList<ArrayList<Integer>> playerList)
     {
         for (int i = 1; i <= 4; i++)
+        {
             playerList.add(new ArrayList<Integer>());
+        }
     }
 
-    public static int sequenceNumber(int AINumber, int UserNumber)
+    public static int AISequenceNumber(int AINumber)
     {
-        int player = 4;
-
-        if (AINumber == 5)// 迴轉
+        int player;
+        if (AINumber == 5)
         {
             player = 5;
         }
-        else if (UserNumber == 5)
-        {
-            player = 5;
-        }
-        else if (AINumber == 4)// 指定
+        else if (AINumber == 4)
         {
             Random ran = new Random();
             player = ran.nextInt(3) + 1;
         }
-        else if (UserNumber == 4)// 指定
+        else
+        {
+            player = 4;
+        }
+        return player;
+    }
+
+    public static int userSequenceNumber(int UserNumber)
+    {
+        int player;
+        if (UserNumber == 5)
+        {
+            player = 5;
+        }
+        else if (UserNumber == 4)
         {
             Scanner scn = new Scanner(System.in);
             System.out.print("請問要指定哪位玩家(輸入 1~3，要注意反轉順序!!): ");
@@ -116,7 +127,7 @@ public class Rick12
 
     public static int Special_Card_Variable(ArrayList<Integer> playerList1, int number)
     {
-        int setPlayer = 0;
+        int setPlayer;
         if (number == 4) //// 正常排序
         {
             setPlayer = playerList1.get(0);
@@ -146,17 +157,18 @@ public class Rick12
 
     public static ArrayList<Integer> Special_Card_Turn_Place(int number, ArrayList<ArrayList<Integer>> player)
     {
-        ArrayList<Integer> returnPlayer = null;
+        ArrayList<Integer> returnPlayer;
         returnPlayer = player.get(number - 1);
         return returnPlayer;
     }
 
     public static void setPlayerNumber(ArrayList<Integer> playerCard)
     {
-        for (int i = 1; i < 5; i++)
+        for (int i = 2; i < 5; i++)
         {
             playerCard.add(i);
         }
+        playerCard.add(1);
     }
 
     public static int AIChooseSpecialCard(int specialCard, int total)
@@ -412,7 +424,6 @@ public class Rick12
         int temp = ran.nextInt(cardList.size());
         int number = cardList.get(temp);
         cardList.remove(temp);
-        cardList.add(number);
         return number;
     }
 }
