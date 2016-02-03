@@ -1,6 +1,9 @@
 import java.util.*;
 import java.util.Random;
 import java.util.Scanner;
+
+import com.sun.xml.internal.bind.v2.runtime.reflect.opt.Const;
+
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -12,7 +15,7 @@ public class Rick12
         ArrayList<ArrayList<Integer>> playerList = new ArrayList<ArrayList<Integer>>();
         ArrayList<Integer> sequencePlayerList = new ArrayList<Integer>();
         Scanner scn = new Scanner(System.in);
-        setplayerList(playerList);
+        setplayerList(playerList); // initialize
         cardDeck(cardList);
         playerCardList(cardList, playerList);
         setPlayerNumber(sequencePlayerList);
@@ -24,19 +27,17 @@ public class Rick12
         // System.out.println("輸入'0'即可立即結束遊戲喔~~");
         // System.out.println("--------------開始遊戲--------------");
         int total = 0;
-        int Set_Special_Card_Variable = 1;
-        int intPlayerUser = 0;
-        int intComputerPlayer = 0;
+        int SetCardVariable = 1;
+        int playerOutTheCard = 0;
+        ArrayList<Integer> setSpecialCardTurnPlace = playerList.get(0);
         for (;;)
         {
-            ArrayList<Integer> Set_SpecialCard_Turn_Place = Special_Card_Turn_Place(Set_Special_Card_Variable, playerList);
 
-            if (Set_SpecialCard_Turn_Place == playerList.get(0))
+            if (setSpecialCardTurnPlace == playerList.get(0))
             {
-                intPlayerUser = playOutCard(Set_SpecialCard_Turn_Place, cardList, 1, playerUserChoose(playerList.get(0)));
-                Set_Special_Card_Variable = Special_Card_Variable(sequencePlayerList, userSequenceNumber(intPlayerUser));
-                total = UserChooseSpecialCard(intPlayerUser, total);
-                intComputerPlayer = 0;
+                playerOutTheCard = playOutCard(setSpecialCardTurnPlace, cardList, SetCardVariable, playerUserChoose(playerList.get(0)));
+                SetCardVariable = specialCardVariable(sequencePlayerList, userSequenceNumber(playerOutTheCard));
+                total = UserChooseSpecialCard(playerOutTheCard, total);
                 System.out.println("目前分數: " + total);
                 System.out.println("**********");
                 if (total > 99)
@@ -46,7 +47,7 @@ public class Rick12
                 }
                 else
                 {
-                    if (intPlayerUser == -1)
+                    if (playerOutTheCard == -1)
                     {
                         System.out.println("遊戲結束!!!");
                         for (int i = 0; i <= 3; i++)
@@ -61,11 +62,10 @@ public class Rick12
             }
             else
             {
-                int selectComputer = AIChooseCard(Set_SpecialCard_Turn_Place, total);
-                intComputerPlayer = playOutCard(Set_SpecialCard_Turn_Place, cardList, sequencePlayerList.get(3), selectComputer);
-                Set_Special_Card_Variable = Special_Card_Variable(sequencePlayerList, AISequenceNumber(intComputerPlayer));
-                total = AIChooseSpecialCard(intComputerPlayer, total);
-                intPlayerUser = 0;
+                int selectComputer = AIChooseCard(setSpecialCardTurnPlace, total);
+                playerOutTheCard = playOutCard(setSpecialCardTurnPlace, cardList, SetCardVariable, selectComputer);
+                SetCardVariable = specialCardVariable(sequencePlayerList, AISequenceNumber(playerOutTheCard));
+                total = AIChooseSpecialCard(playerOutTheCard, total);
                 System.out.println("目前分數: " + total);
                 System.out.println("**********");
                 if (total > 99)
@@ -74,11 +74,15 @@ public class Rick12
                     break;
                 }
             }
+            setSpecialCardTurnPlace = SpecialCardTurnPlace(SetCardVariable, playerList);
+
         }
     }
 
     public static void setplayerList(ArrayList<ArrayList<Integer>> playerList)
     {
+        ArrayList<Integer> temp = new ArrayList<Integer>();
+
         for (int i = 1; i <= 4; i++)
         {
             playerList.add(new ArrayList<Integer>());
@@ -104,12 +108,14 @@ public class Rick12
         return player;
     }
 
+    static int SPEICAL_CARD_TYPE_REVERSE = 5;
+
     public static int userSequenceNumber(int UserNumber)
     {
         int player;
         if (UserNumber == 5)
         {
-            player = 5;
+            player = SPEICAL_CARD_TYPE_REVERSE;
         }
         else if (UserNumber == 4)
         {
@@ -125,26 +131,26 @@ public class Rick12
         return player;
     }
 
-    public static int Special_Card_Variable(ArrayList<Integer> playerList1, int number)
+    public static int specialCardVariable(ArrayList<Integer> playerList1, int SPEICAL_CARD_TYPE)
     {
         int setPlayer;
-        if (number == 4) //// 正常排序
+        if (SPEICAL_CARD_TYPE == 4) //// 正常排序
         {
             setPlayer = playerList1.get(0);
             playerList1.remove(0);
             playerList1.add(setPlayer);
         }
-        else if (number == 5) ///// 5號牌-迴轉
+        else if (SPEICAL_CARD_TYPE == SPEICAL_CARD_TYPE_REVERSE) ///// 5號牌-迴轉
         {
             setPlayer = playerList1.get(2);
-            Collections.swap(playerList1, 0, 2);
+            Collections.swap(playerList1, 0, 2);// 1234 3214 2341
             playerList1.remove(0);
             playerList1.add(setPlayer);
 
         }
         else /// 4號牌-指定
         {
-            for (int i = 1; i <= number; i++)
+            for (int i = 1; i <= SPEICAL_CARD_TYPE; i++)
             {
                 int Player = playerList1.get(0);
                 playerList1.remove(0);
@@ -155,7 +161,7 @@ public class Rick12
         return setPlayer;
     }
 
-    public static ArrayList<Integer> Special_Card_Turn_Place(int number, ArrayList<ArrayList<Integer>> player)
+    public static ArrayList<Integer> SpecialCardTurnPlace(int number, ArrayList<ArrayList<Integer>> player)
     {
         ArrayList<Integer> returnPlayer;
         returnPlayer = player.get(number - 1);
