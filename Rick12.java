@@ -48,7 +48,7 @@ public class Rick12
                     if (intPlayerUser == -1)
                     {
                         System.out.println("遊戲結束!!!");
-                        for (int i = 1; i <= 3; i++)
+                        for (int i = 0; i <= 3; i++)
                         {
                             System.out.println("**********");
                             System.out.println("玩家" + (i + 1) + "的手牌");
