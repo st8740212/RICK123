@@ -17,23 +17,24 @@ public class Rick12
         playerCardList(cardList, playerList);
         setPlayerNumber(sequencePlayerList);
 
-        System.out.println("歡迎來到我的99遊戲");
-        System.out.print("請輸入你的姓名: ");
-        String name = scn.nextLine();
-        System.out.println("歡迎" + name);
-        System.out.println("輸入'0'即可立即結束遊戲喔~~");
-        System.out.println("--------------開始遊戲--------------");
+//        System.out.println("歡迎來到我的99遊戲");
+//        System.out.print("請輸入你的姓名: ");
+//        String name = scn.nextLine();
+//        System.out.println("歡迎" + name);
+//        System.out.println("輸入'0'即可立即結束遊戲喔~~");
+//        System.out.println("--------------開始遊戲--------------");
         int total = 0;
+        int Set_Special_Card_Variable = 1;
         int intPlayerUser = 0;
         int intComputerPlayer = 0;
         for (;;)
         {
-            ArrayList<Integer> Set_SpecialCard_Turn_Place = Special_Card_Turn_Place(sequencePlayerList, sequenceNumber(intComputerPlayer, intPlayerUser), playerList);
+            ArrayList<Integer> Set_SpecialCard_Turn_Place = Special_Card_Turn_Place(Set_Special_Card_Variable, playerList);
 
             if (Set_SpecialCard_Turn_Place == playerList.get(0))
             {
-
                 intPlayerUser = playOutCard(Set_SpecialCard_Turn_Place, cardList, 1, playerUserChoose(playerList.get(0)));
+                Set_Special_Card_Variable = Special_Card_Variable(sequencePlayerList, sequenceNumber(intComputerPlayer, intPlayerUser));
                 total = UserChooseSpecialCard(intPlayerUser, total);
                 intComputerPlayer = 0;
                 System.out.println("目前分數: " + total);
@@ -62,6 +63,7 @@ public class Rick12
             {
                 int selectComputer = AIChooseCard(Set_SpecialCard_Turn_Place, total);
                 intComputerPlayer = playOutCard(Set_SpecialCard_Turn_Place, cardList, sequencePlayerList.get(3), selectComputer);
+                Set_Special_Card_Variable = Special_Card_Variable(sequencePlayerList, sequenceNumber(intComputerPlayer, intPlayerUser));
                 total = AIChooseSpecialCard(intComputerPlayer, total);
                 intPlayerUser = 0;
                 System.out.println("目前分數: " + total);
@@ -77,14 +79,8 @@ public class Rick12
 
     public static void setplayerList(ArrayList<ArrayList<Integer>> playerList)
     {
-        ArrayList<Integer> player1 = new ArrayList<Integer>();
-        ArrayList<Integer> player2 = new ArrayList<Integer>();
-        ArrayList<Integer> player3 = new ArrayList<Integer>();
-        ArrayList<Integer> player4 = new ArrayList<Integer>();
-        playerList.add(player1);
-        playerList.add(player2);
-        playerList.add(player3);
-        playerList.add(player4);
+        for (int i = 1; i <= 4; i++)
+            playerList.add(new ArrayList<Integer>());
     }
 
     public static int sequenceNumber(int AINumber, int UserNumber)
@@ -118,7 +114,7 @@ public class Rick12
         return player;
     }
 
-    public static ArrayList<Integer> Special_Card_Turn_Place(ArrayList<Integer> playerList1, int number, ArrayList<ArrayList<Integer>> player)/// 1~3是指定，4是正常排序，5是迴轉
+    public static int Special_Card_Variable(ArrayList<Integer> playerList1, int number)
     {
         int setPlayer = 0;
         if (number == 4) //// 正常排序
@@ -145,22 +141,13 @@ public class Rick12
             }
             setPlayer = playerList1.get(3);
         }
+        return setPlayer;
+    }
+
+    public static ArrayList<Integer> Special_Card_Turn_Place(int number, ArrayList<ArrayList<Integer>> player)
+    {
         ArrayList<Integer> returnPlayer = null;
-        switch (setPlayer)
-        {
-        case 1:
-            returnPlayer = player.get(0);
-            break;
-        case 2:
-            returnPlayer = player.get(1);
-            break;
-        case 3:
-            returnPlayer = player.get(2);
-            break;
-        case 4:
-            returnPlayer = player.get(3);
-            break;
-        }
+        returnPlayer = player.get(number - 1);
         return returnPlayer;
     }
 
