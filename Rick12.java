@@ -87,24 +87,24 @@ public class Rick12
         playerList.add(player4);
     }
 
-    public static int sequenceNumber(int number1, int number2)
+    public static int sequenceNumber(int AINumber, int UserNumber)
     {
         int player = 4;
 
-        if (number1 == 5)// 迴轉
+        if (AINumber == 5)// 迴轉
         {
             player = 5;
         }
-        else if (number2 == 5)
+        else if (UserNumber == 5)
         {
             player = 5;
         }
-        else if (number1 == 4)// 指定
+        else if (AINumber == 4)// 指定
         {
             Random ran = new Random();
             player = ran.nextInt(3) + 1;
         }
-        else if (number2 == 4)// 指定
+        else if (UserNumber == 4)// 指定
         {
             Scanner scn = new Scanner(System.in);
             System.out.print("請問要指定哪位玩家(輸入 1~3，要注意反轉順序!!): ");
