@@ -25,7 +25,6 @@ public class Rick12
         int total = 0;
         int intPlayerUser = 0;
         int intComputerPlayer = 0;
-
         for (;;)
         {
             ArrayList<Integer> Set_SpecialCard_Turn_Place = specialCard_Turn_Place(sequencePlayerList, sequenceNumber(intComputerPlayer, intPlayerUser), playerList);
@@ -140,6 +139,7 @@ public class Rick12
             returnPlayer = player.get(1);
             break;
         case 3:
+            returnPlayer = player.get(2);
             break;
         case 4:
             returnPlayer = player.get(3);
