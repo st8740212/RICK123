@@ -9,13 +9,14 @@ public class Rick12
     public static void main(String[] args)
     {
         ArrayList<Integer> cardList = new ArrayList<Integer>();
-        ArrayList<Integer> playerList = new ArrayList<Integer>();
+        ArrayList<ArrayList<Integer>> playerList = new ArrayList<ArrayList<Integer>>();
         ArrayList<Integer> sequencePlayerList = new ArrayList<Integer>();
-        cardDeck(cardList);
         Scanner scn = new Scanner(System.in);
-        playerCardList(cardList, player1, player2, player3, player4);
-        setPlayerNumber(sequencePlayerList);
         setplayerList(playerList);
+        cardDeck(cardList);
+        playerCardList(cardList, playerList);
+        setPlayerNumber(sequencePlayerList);
+
         // System.out.println("歡迎來到我的99遊戲");
         // System.out.print("請輸入你的姓名: ");
         // String name = scn.nextLine();
@@ -24,15 +25,14 @@ public class Rick12
         int total = 0;
         int intPlayerUser = 0;
         int intComputerPlayer = 0;
-        
+
         for (;;)
         {
-            ArrayList<Integer> Set_SpecialCard_Turn_Place = specialCard_Turn_Place(sequencePlayerList, sequenceNumber(intComputerPlayer, intPlayerUser), player1,
-                    player2, player3, player4);
+            ArrayList<Integer> Set_SpecialCard_Turn_Place = specialCard_Turn_Place(sequencePlayerList, sequenceNumber(intComputerPlayer, intPlayerUser), playerList);
 
-            if (Set_SpecialCard_Turn_Place == player1)
+            if (Set_SpecialCard_Turn_Place == playerList.get(0))
             {
-                intPlayerUser = playOutCard(Set_SpecialCard_Turn_Place, cardList, 1, playerUserChoose(player1));
+                intPlayerUser = playOutCard(Set_SpecialCard_Turn_Place, cardList, 1, playerUserChoose(playerList.get(0)));
                 total = UserChooseSpecialCard(intPlayerUser, total);
                 intComputerPlayer = 0;
                 System.out.println("目前分數: " + total);
@@ -59,14 +59,19 @@ public class Rick12
             }
         }
     }
-    
-    public static void  setplayerList( ArrayList<Integer> playerList)
+
+    public static void setplayerList(ArrayList<ArrayList<Integer>> playerList)
     {
-    ArrayList<Integer> player1 = new ArrayList<Integer>();
-    ArrayList<Integer> player2 = new ArrayList<Integer>();
-    ArrayList<Integer> player3 = new ArrayList<Integer>();
-    ArrayList<Integer> player4 = new ArrayList<Integer>();
+        ArrayList<Integer> player1 = new ArrayList<Integer>();
+        ArrayList<Integer> player2 = new ArrayList<Integer>();
+        ArrayList<Integer> player3 = new ArrayList<Integer>();
+        ArrayList<Integer> player4 = new ArrayList<Integer>();
+        playerList.add(player1);
+        playerList.add(player2);
+        playerList.add(player3);
+        playerList.add(player4);
     }
+
     public static int sequenceNumber(int number1, int number2)
     {
         int player = 4;
@@ -98,48 +103,46 @@ public class Rick12
         return player;
     }
 
-    public static ArrayList<Integer> specialCard_Turn_Place(ArrayList<Integer> playerList, int number, ArrayList<Integer> player1,
-            ArrayList<Integer> player2, ArrayList<Integer> player3, ArrayList<Integer> player4)/// 1~3是指定，4是正常排序，5是迴轉
+    public static ArrayList<Integer> specialCard_Turn_Place(ArrayList<Integer> playerList1, int number, ArrayList<ArrayList<Integer>> player)/// 1~3是指定，4是正常排序，5是迴轉
     {
-        int Player = 0;
+        int setPlayer = 0;
         if (number == 4) //// 正常排序
         {
-            Player = playerList.get(0);
-            playerList.remove(0);
-            playerList.add(Player);
+            setPlayer = playerList1.get(0);
+            playerList1.remove(0);
+            playerList1.add(setPlayer);
         }
         else if (number == 5) ///// 5號牌-迴轉
         {
-            Player = playerList.get(2);
-            Collections.swap(playerList, 0, 2);
-            playerList.remove(0);
-            playerList.add(Player);
+            setPlayer = playerList1.get(2);
+            Collections.swap(playerList1, 0, 2);
+            playerList1.remove(0);
+            playerList1.add(setPlayer);
 
         }
         else /// 4號牌-指定
         {
             for (int i = 1; i <= number; i++)
             {
-                int setPlayer = playerList.get(0);
-                playerList.remove(0);
-                playerList.add(setPlayer);
+                int Player = playerList1.get(0);
+                playerList1.remove(0);
+                playerList1.add(Player);
             }
-            Player = playerList.get(3);
+            setPlayer = playerList1.get(3);
         }
         ArrayList<Integer> returnPlayer = null;
-        switch (Player)
+        switch (setPlayer)
         {
         case 1:
-            returnPlayer = player1;
+            returnPlayer = player.get(0);
             break;
         case 2:
-            returnPlayer = player2;
+            returnPlayer = player.get(1);
             break;
         case 3:
-            returnPlayer = player3;
             break;
         case 4:
-            returnPlayer = player4;
+            returnPlayer = player.get(3);
             break;
         }
         return returnPlayer;
@@ -250,15 +253,14 @@ public class Rick12
         return total;
     }
 
-    private static void playerCardList(ArrayList<Integer> cardList, ArrayList<Integer> player1,
-            ArrayList<Integer> player2, ArrayList<Integer> player3, ArrayList<Integer> player4)
+    private static void playerCardList(ArrayList<Integer> cardList, ArrayList<ArrayList<Integer>> player)
     {
-        for (int i = 1; i <= 5; i++)
+        for (int j = 0; j <= 3; j++)
         {
-            player1.add(shuffleCard(cardList));
-            player2.add(shuffleCard(cardList));
-            player3.add(shuffleCard(cardList));
-            player4.add(shuffleCard(cardList));
+            for (int i = 1; i <= 5; i++)
+            {
+                player.get(j).add(shuffleCard(cardList));
+            }
         }
     }
 
